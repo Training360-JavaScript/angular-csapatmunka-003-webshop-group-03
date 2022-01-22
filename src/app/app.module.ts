@@ -7,6 +7,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { Cat01Component } from './page/cat01/cat01.component';
 import { Cat02Component } from './page/cat02/cat02.component';
 import { HomeComponent } from './page/home/home.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { FeaturedPipe } from './pipe/featured.pipe';
+import { NumberrandomPipe } from './pipe/numberrandom.pipe';
 
 @NgModule({
   declarations: [
@@ -14,7 +17,10 @@ import { HomeComponent } from './page/home/home.component';
     NavigationComponent,
     Cat01Component,
     Cat02Component,
-    HomeComponent
+    HomeComponent,
+    FilterPipe,
+    FeaturedPipe,
+    NumberrandomPipe
   ],
   imports: [
     BrowserModule,
