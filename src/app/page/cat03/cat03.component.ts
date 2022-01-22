@@ -4,11 +4,11 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
-  selector: 'app-cat01',
-  templateUrl: './cat01.component.html',
-  styleUrls: ['./cat01.component.scss']
+  selector: 'app-cat03',
+  templateUrl: './cat03.component.html',
+  styleUrls: ['./cat03.component.scss']
 })
-export class Cat01Component implements OnInit {
+export class Cat03Component implements OnInit {
 
   constructor(
     private productService: ProductService,
@@ -17,14 +17,14 @@ export class Cat01Component implements OnInit {
   ngOnInit(): void {
   }
 
-  categoryName: string = "Action"
+  categoryName: string = "Crime"
 
   //Az adott kategória adatai
   categoryDetails: Category =
     {
-      "id": 1,
-      "name": "Action",
-      "description": "Movies in the action genre are defined by risk and stakes. While many movies may feature an action sequence, to be appropriately categorized inside the action genre, the bulk of the content must be action-oriented, including fight scenes, stunts, car chases, and general danger.",
+      "id": 3,
+      "name": "Crime",
+      "description": "The crime genre deals with both sides of the criminal justice system but does not focus on legislative matters or civil suits and legal actions. The best crime movies often occupy moral gray areas where heroes and villains are much harder to define. Many of Martin Scorsese's best movies or Quentin Tarantino's movies fall within the crime genre.",
     }
 
   //= this.categoryService.getCategoryDetailes(this.categoryName);

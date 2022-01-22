@@ -4,11 +4,11 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
-  selector: 'app-cat01',
-  templateUrl: './cat01.component.html',
-  styleUrls: ['./cat01.component.scss']
+  selector: 'app-cat05',
+  templateUrl: './cat05.component.html',
+  styleUrls: ['./cat05.component.scss']
 })
-export class Cat01Component implements OnInit {
+export class Cat05Component implements OnInit {
 
   constructor(
     private productService: ProductService,
@@ -17,14 +17,14 @@ export class Cat01Component implements OnInit {
   ngOnInit(): void {
   }
 
-  categoryName: string = "Action"
+  categoryName: string = "Comedy"
 
   //Az adott kategória adatai
   categoryDetails: Category =
     {
-      "id": 1,
-      "name": "Action",
-      "description": "Movies in the action genre are defined by risk and stakes. While many movies may feature an action sequence, to be appropriately categorized inside the action genre, the bulk of the content must be action-oriented, including fight scenes, stunts, car chases, and general danger.",
+      "id": 5,
+      "name": "Comedy",
+      "description": "The comedy genre is defined by events that are intended to make someone laugh, no matter if the story is macabre, droll, or zany. Comedy can be found in most movies, but if the majority of the film is intended to be a comedy you may safely place it in this genre. The best comedy movies range throughout this entire spectrum of humor.",
     }
 
   //= this.categoryService.getCategoryDetailes(this.categoryName);

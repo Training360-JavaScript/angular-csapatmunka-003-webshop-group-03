@@ -4,11 +4,11 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
-  selector: 'app-cat01',
-  templateUrl: './cat01.component.html',
-  styleUrls: ['./cat01.component.scss']
+  selector: 'app-cat04',
+  templateUrl: './cat04.component.html',
+  styleUrls: ['./cat04.component.scss']
 })
-export class Cat01Component implements OnInit {
+export class Cat04Component implements OnInit {
 
   constructor(
     private productService: ProductService,
@@ -17,14 +17,14 @@ export class Cat01Component implements OnInit {
   ngOnInit(): void {
   }
 
-  categoryName: string = "Action"
+  categoryName: string = "Drama"
 
   //Az adott kategória adatai
   categoryDetails: Category =
     {
-      "id": 1,
-      "name": "Action",
-      "description": "Movies in the action genre are defined by risk and stakes. While many movies may feature an action sequence, to be appropriately categorized inside the action genre, the bulk of the content must be action-oriented, including fight scenes, stunts, car chases, and general danger.",
+      "id": 4,
+      "name": "Drama",
+      "description": "The drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences. Drama is a very broad category and untethered to any era — from movies based on Shakespeare to contemporary narratives.",
     }
 
   //= this.categoryService.getCategoryDetailes(this.categoryName);
