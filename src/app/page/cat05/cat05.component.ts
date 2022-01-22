@@ -4,11 +4,11 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
-  selector: 'app-cat02',
-  templateUrl: './cat02.component.html',
-  styleUrls: ['./cat02.component.scss']
+  selector: 'app-cat05',
+  templateUrl: './cat05.component.html',
+  styleUrls: ['./cat05.component.scss']
 })
-export class Cat02Component implements OnInit {
+export class Cat05Component implements OnInit {
 
   constructor(
     private productService: ProductService,
@@ -17,16 +17,14 @@ export class Cat02Component implements OnInit {
   ngOnInit(): void {
   }
 
-  categoryName: string = "Animation"
-
-  keyword: string = ''
+  categoryName: string = "Comedy"
 
   //Az adott kategória adatai
   categoryDetails: Category =
     {
-      "id": 2,
-      "name": "Animation",
-      "description": "The animation genre is defined by inanimate objects being manipulated to appear as though they are living. This can be done in many different ways and can incorporate any other genre and sub-genre on this list. For more info on animation, you can dive deeper on the types of animation or see our list of the best animated movies of all time.",
+      "id": 5,
+      "name": "Comedy",
+      "description": "The comedy genre is defined by events that are intended to make someone laugh, no matter if the story is macabre, droll, or zany. Comedy can be found in most movies, but if the majority of the film is intended to be a comedy you may safely place it in this genre. The best comedy movies range throughout this entire spectrum of humor.",
     }
 
   //= this.categoryService.getCategoryDetailes(this.categoryName);
