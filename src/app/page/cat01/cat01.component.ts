@@ -12,12 +12,16 @@ export class Cat01Component implements OnInit {
 
   constructor(
     private productService: ProductService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
 
   categoryName: string = "Action"
+
+  keyword: string = ''
+
 
   //Az adott kategória adatai
   categoryDetails: Category =
