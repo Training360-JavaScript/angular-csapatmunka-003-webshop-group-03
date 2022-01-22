@@ -19,6 +19,8 @@ export class Cat03Component implements OnInit {
 
   categoryName: string = "Crime"
 
+  keyword: string = ''
+
   //Az adott kategória adatai
   categoryDetails: Category =
     {

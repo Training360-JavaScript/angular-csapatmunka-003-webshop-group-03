@@ -9,8 +9,6 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class HomeComponent implements OnInit {
 
-
-
   constructor(
     private productService : ProductService,
   ) { }
@@ -19,9 +17,9 @@ export class HomeComponent implements OnInit {
   }
 
   // A product tömb teljes tartalma
-  listOfProducts: Product[] = this.productService.getAll();
+  //listOfProducts: Product[] = this.productService.getAll();
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  listOfCategorizedProducts: Product[] = this.productService.getCategorized('comedy');
+  //listOfCategorizedProducts: Product[] = this.productService.getCategorized('');
 
 }
