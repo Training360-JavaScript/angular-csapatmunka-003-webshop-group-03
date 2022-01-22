@@ -1,1 +1,37 @@
-<p>cat09 works!</p>
+<h1 class="text-center mt-5"> {{ categoryDetails.name }} movies</h1>
+<h3 class="mt-5"> You should know about the {{ categoryDetails.name }} genre:</h3>
+
+<p> {{ categoryDetails.description }} </p>
+
+<h3 class="mt-5">Featured content:</h3>
+
+<div class="row mb-3">
+  <app-movie-card *ngFor=" let product of listOfCategorizedProducts | featured:'true' | numberrandom:5 " [movie] = "product"></app-movie-card>
+</div>
+
+<label>Search movie:</label>
+<input type="text" class="form-control" [(ngModel)]="keyword">
+
+<h3 class="mt-5">All movies available in {{ categoryDetails.name }} genre:</h3>
+
+<div class="row">
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Category</th>
+        <th>Featured</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let product of listOfCategorizedProducts | filter: keyword">
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.catId }}</td>
+        <td>{{ product.featured }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>

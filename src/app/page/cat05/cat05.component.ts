@@ -19,6 +19,8 @@ export class Cat05Component implements OnInit {
 
   categoryName: string = "Comedy"
 
+  keyword: string = ''
+
   //Az adott kategória adatai
   categoryDetails: Category =
     {
