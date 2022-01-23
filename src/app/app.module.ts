@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +11,7 @@ import { HomeComponent } from './page/home/home.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { FeaturedPipe } from './pipe/featured.pipe';
 import { NumberrandomPipe } from './pipe/numberrandom.pipe';
+import { TextsorterPipe } from './pipe/textsorter.pipe';
 
 @NgModule({
   declarations: [
@@ -20,11 +22,13 @@ import { NumberrandomPipe } from './pipe/numberrandom.pipe';
     HomeComponent,
     FilterPipe,
     FeaturedPipe,
-    NumberrandomPipe
+    NumberrandomPipe,
+    TextsorterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
