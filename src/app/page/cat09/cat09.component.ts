@@ -4,11 +4,11 @@ import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 
 @Component({
-  selector: 'app-cat02',
-  templateUrl: './cat02.component.html',
-  styleUrls: ['./cat02.component.scss']
+  selector: 'app-cat09',
+  templateUrl: './cat09.component.html',
+  styleUrls: ['./cat09.component.scss']
 })
-export class Cat02Component implements OnInit {
+export class Cat09Component implements OnInit {
 
   constructor(
     private productService: ProductService,
@@ -17,16 +17,16 @@ export class Cat02Component implements OnInit {
   ngOnInit(): void {
   }
 
-  categoryName: string = "Animation"
+  categoryName: string = "Horror"
 
   keyword: string = ''
 
   //Az adott kategória adatai
   categoryDetails: Category =
     {
-      "id": 2,
-      "name": "Animation",
-      "description": "The animation genre is defined by inanimate objects being manipulated to appear as though they are living. This can be done in many different ways and can incorporate any other genre and sub-genre on this list. For more info on animation, you can dive deeper on the types of animation or see our list of the best animated movies of all time.",
+      "id": 9,
+      "name": "Horror",
+      "description": "The horror genre is centered upon depicting terrifying or macabre events for the sake of entertainment. A thriller might tease the possibility of a terrible event, whereas a horror film will deliver all throughout the film. The best horror movies are designed to get the heart pumping and to show us a glimpse of the unknown.",
     }
 
   //= this.categoryService.getCategoryDetailes(this.categoryName);

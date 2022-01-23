@@ -11,12 +11,19 @@ export interface IMenuItem {
 })
 export class ConfigService {
 
-  appName: string = 'Sample Webshop';
+  appName: string = 'SOLID Cast';
 
   menuItems: IMenuItem[] = [
     {text: 'Home', link: '/', icon: 'home'},
-    {text: 'Category01', link: '/cat01'},
-    {text: 'Category02', link: '/cat02'},
+    {text: 'Action', link: '/cat01'},
+    {text: 'Animation', link: '/cat02'},
+    {text: 'Crime', link: '/cat03'},
+    {text: 'Drama', link: '/cat04'},
+    {text: 'Comedy', link: '/cat05'},
+    {text: 'Romance', link: '/cat06'},
+    {text: 'Fantasy', link: '/cat07'},
+    {text: 'Sci-fi', link: '/cat08'},
+    {text: 'Horror', link: '/cat09'},
   ];
 
   constructor() { }
