@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from 'src/app/model/category';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
-import { CategoryService } from 'src/app/service/category.service';
 
 @Component({
   selector: 'app-home',
@@ -11,30 +9,17 @@ import { CategoryService } from 'src/app/service/category.service';
 })
 export class HomeComponent implements OnInit {
 
-  phrase: string = '';
-
-  filterKey: string = '';
-
   constructor(
     private productService : ProductService,
-    private categoryService : CategoryService
   ) { }
 
   ngOnInit(): void {
   }
 
   // A product tömb teljes tartalma
-  listOfProducts: Product[] = this.productService.getAll();
-
-  categoryDetails = this.categoryService.getAllCategoryName();
-
-  probData = this.categoryService.getCategoryDetailes('Horror').description;
-
-  //categoryDetails: String = this.categoryService.getCategoryDetailes('Horror').description;
-  //categoryDetails_2 = this.categoryService.getCategoryDetailes('Horror').id;
-
+  //listOfProducts: Product[] = this.productService.getAll();
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  //listOfCategorizedProducts: Product[] = this.productService.getCategorized('comedy');
+  //listOfCategorizedProducts: Product[] = this.productService.getCategorized('');
 
 }

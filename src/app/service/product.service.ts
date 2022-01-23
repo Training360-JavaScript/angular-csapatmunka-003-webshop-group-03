@@ -29,13 +29,12 @@ export class ProductService {
 
   // 'category' kulcs alapján szűri a product tömb objektumait.
   // Működik ez is, de átdolgozom inkább ezt a szűrési funkciót pipe-ra.
-  getCategorized(categoryName: string = 'Sci-fi'): any {
+  getCategorized(categoryName: string = 'Action'): any {
     let category: Category[] = this.listCategory.filter( item => item.name === categoryName);
     console.log(category[0]);
     console.log(category[0].id);
-    return this.list.filter( item => item.catId === category[0].id)
-    // return category;
-    //return this.list.filter( item => item.catId === catID);
-    //return this.list;
+    let finalList= this.list.filter( item => item.catId === category[0].id)
+    console.log(finalList)
+    return finalList
   }
 }
