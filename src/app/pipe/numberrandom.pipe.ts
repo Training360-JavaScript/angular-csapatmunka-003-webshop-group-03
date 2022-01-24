@@ -10,6 +10,9 @@ export class NumberrandomPipe<T> implements PipeTransform {
       return value;
     }
 
+    // Ha a bejövő tömb hossza kisebb, mint amennyi elemű tömböt kérünk, akkor változatlanul továbbadja az eredeti tömböt.
+    if (value.length < numberOfItems) return value;
+
     const arrRanNum = Array(numberOfItems).fill(null);
 
     // Véletlen egész szám generálás: '0...numberOfItems - 1' Alapértelmezetten: 0...4;

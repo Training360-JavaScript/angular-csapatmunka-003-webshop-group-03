@@ -10,6 +10,7 @@ import { HomeComponent } from './page/home/home.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { FeaturedPipe } from './pipe/featured.pipe';
 import { NumberrandomPipe } from './pipe/numberrandom.pipe';
+import { TextsorterPipe } from './pipe/textsorter.pipe';
 import { Cat02Component } from './page/cat02/cat02.component';
 import { Cat03Component } from './page/cat03/cat03.component';
 import { Cat04Component } from './page/cat04/cat04.component';
@@ -24,11 +25,12 @@ import { MovieCardComponent } from './common/movie-card/movie-card.component';
   declarations: [
     AppComponent,
     NavigationComponent,
-    Cat01Component,
     HomeComponent,
     FilterPipe,
     FeaturedPipe,
     NumberrandomPipe,
+    TextsorterPipe,
+    Cat01Component,
     Cat02Component,
     Cat03Component,
     Cat04Component,
