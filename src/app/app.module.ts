@@ -20,6 +20,7 @@ import { Cat08Component } from './page/cat08/cat08.component';
 import { Cat09Component } from './page/cat09/cat09.component';
 import { MovieCardComponent } from './common/movie-card/movie-card.component';
 import { TextsorterPipe } from './pipe/textsorter.pipe';
+import { TestpageComponent } from './page/testpage/testpage.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { TextsorterPipe } from './pipe/textsorter.pipe';
     Cat08Component,
     Cat09Component,
     MovieCardComponent,
-TextsorterPipe
+TextsorterPipe,
+TestpageComponent
   ],
   imports: [
     BrowserModule,

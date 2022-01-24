@@ -24,6 +24,7 @@ export class ConfigService {
     {text: 'Fantasy', link: '/cat07'},
     {text: 'Sci-fi', link: '/cat08'},
     {text: 'Horror', link: '/cat09'},
+    {text: 'Tesztoldal', link: '/test'},
   ];
 
   constructor() { }
