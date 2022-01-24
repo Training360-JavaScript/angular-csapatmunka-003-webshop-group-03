@@ -1,5 +1,54 @@
 <p>home works!</p>
 
+ {{ probData | textsorter:140}}
+
+
+
+
+<h1>### 3. terméklista lapozó</h1>
+
+<div class="row">
+  <div class="col-4">
+    <select [(ngModel)]="filterKey" class="form-control">
+      <option [value]="">id</option>
+      <option [value]="">Name</option>
+      <option [value]="">catId</option>
+    </select>
+
+    {{ filterKey }}
+  </div>
+
+  <div class="col-8">
+    <input [(ngModel)]="phrase" type="text" class="form-control">
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table mt-3">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Featured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of listOfProducts | filter:phrase:filterKey">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.catId }}</td>
+            <td>{{ product.featured }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+
+
+
 <!--
 <h1>!!! TESZT - 1 !!!</h1>
 
@@ -22,13 +71,9 @@
         <td>{{ product.featured }}</td>
       </tr>
     </tbody>
-
   </table>
 </div>
-
-
 <h1 class="mt-4">!!! TESZT - 2 !!!</h1>
-
 <div class="row">
   <h4>Akciós termékek | 'features: bármi' | véletlen 5 db</h4>
   <table class="table table-striped mt-3">
@@ -48,13 +93,9 @@
         <td>{{ product.featured }}</td>
       </tr>
     </tbody>
-
   </table>
 </div>
-
-
 <h1 class="mt-4">!!! TESZT - 3 !!!</h1>
-
 <div class="row">
   <h4>Azonos kategóriájú filmek | 'features: bármi' | 'category': metódussal állítható | véletlen 7 db</h4>
   <table class="table table-striped mt-3">
@@ -68,6 +109,7 @@
     </thead>
     <tbody>
       <tr *ngFor=" let product of listOfProducts">
+      <tr *ngFor=" let product of listOfProducts | numberrandom:7">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.catId }}</td>
