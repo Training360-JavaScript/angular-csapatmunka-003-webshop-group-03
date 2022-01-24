@@ -19,8 +19,6 @@ export class Cat04Component implements OnInit {
 
   categoryName: string = "Drama"
 
-  keyword: string = ''
-
   //Az adott kategória adatai
   categoryDetails: Category =
     {
@@ -33,9 +31,5 @@ export class Cat04Component implements OnInit {
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
   listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
-
-  listing(listOfCategorizedProducts : Product[]):void {
-    console.log(listOfCategorizedProducts)
-  }
 
 }

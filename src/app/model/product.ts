@@ -6,7 +6,7 @@ export class Product {
   description: string = '';
   image: string = '';
   price: number = 0;
-  stock: string = '';
+  stock: number = 0;
   featured: boolean = false;
   active: boolean = false;
 }
