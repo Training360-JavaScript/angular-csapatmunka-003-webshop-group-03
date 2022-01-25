@@ -22,15 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
   // A product tömb teljes tartalma
-  listOfProducts: Product[] = this.productService.getAll();
-
-  categoryDetails = this.categoryService.getAllCategoryName();
-
-  probData = this.categoryService.getCategoryDetailes('Horror').description;
-
-  //categoryDetails: String = this.categoryService.getCategoryDetailes('Horror').description;
-  //categoryDetails_2 = this.categoryService.getCategoryDetailes('Horror').id;
-
+  productList: Product[] = this.productService.getAll();
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
   //listOfCategorizedProducts: Product[] = this.productService.getCategorized('comedy');
