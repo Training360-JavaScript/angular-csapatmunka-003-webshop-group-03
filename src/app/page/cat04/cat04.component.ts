@@ -38,4 +38,13 @@ export class Cat04Component implements OnInit {
     console.log(listOfCategorizedProducts)
   }
 
+  // A táblázat/lista sorbarendezéséhez:
+  columnKey: string = '';
+  sortDirection: string = 'A...Z';
+  clickCounter: number = 0;
+  onColumnSelect(key: string): void {
+    (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
+    this.sortDirection = ( this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    this.columnKey = key;
+  }
 }

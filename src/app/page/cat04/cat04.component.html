@@ -18,14 +18,14 @@
   <table class="table table-striped mt-3">
     <thead>
       <tr>
-        <th>#</th>
-        <th>Name</th>
+        <th (click)="onColumnSelect('id')">#</th>
+        <th (click)="onColumnSelect('name')">Name</th>
         <th>Category</th>
-        <th>Featured</th>
+        <th (click)="onColumnSelect('featured')">Featured</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor=" let product of listOfCategorizedProducts | filter: keyword">
+      <tr *ngFor=" let product of listOfCategorizedProducts | sorter:columnKey:sortDirection |filter:keyword:'name'">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.catId }}</td>

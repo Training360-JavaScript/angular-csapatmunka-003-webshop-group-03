@@ -5,7 +5,7 @@
   </div>
   <div class="card-body d-flex flex-column">
     <h5 class="card-title">{{ movie.name }}</h5>
-    <p class="card-text ">{{ movie.description }}</p>
+    <p class="card-text ">{{ movie.description | textsorter:100}}</p>
     <div class="myCardFooter mt-auto text-center">
 
       <p class="card-text">Price: <span class="font-weight-bold">{{ movie.price }}$</span></p>

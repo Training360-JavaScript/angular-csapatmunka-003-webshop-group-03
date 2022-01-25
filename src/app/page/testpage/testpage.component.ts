@@ -32,9 +32,11 @@ export class TestpageComponent implements OnInit {
 
   columnKey: string = ''; // kiválasztott oszlophoz tartozó objektumkulcs
 
-  sortDirection: boolean = false;
+  sortDirection: string = 'A...Z';
 
-  data: any;
+  // data: any;
+
+  keyword: string = '';
 
 
     constructor(
@@ -45,23 +47,21 @@ export class TestpageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
+  // Táblázat fejlécére kattintáskor ABC-sorrendbe rendez a kívánt oszlop szerint.
+  // Az ABC-sorrend megfordul azonos oszlopfejlésre kattintás után: 'A...B' <=> 'Z...A'
+  clickCounter: number = 0;
 
   onColumnSelect(key: string): void {
-    if (key === this.columnKey) console.log('Egyezés');
-    console.log('előző: ' + this.columnKey);
-
+    (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
+    // console.log(this.clickCounter) ;
+    this.sortDirection = ( this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    // console.log(this.sortDirection);
     this.columnKey = key;
-
-    console.log('jelenlegi: ' + key);
   }
+  // ----------------
 
 
-  // show():void {
-  //   console.log('lkj');
-  // }
 
-  // adat = this.show();
 
 
 
