@@ -1,1 +1,93 @@
 <p>Tesztoldal Józsinak</p>
+
+
+<details>
+  <summary>Category Service...</summary>
+
+  <h5>CategoryService</h5>
+
+  <h6 class="mt-3 text-info" >- allCategory()</h6>
+  {{ allCategory | json | textsorter:250 }}
+
+  <h6 class="mt-3 text-info">- allCategoryName()</h6>
+  {{ allCategoryName | json }}
+
+  <h6 class="mt-3 text-info">- allCategoryName() | táblázatba olvasva</h6>
+  <table class="table table table-bordered">
+    <tr *ngFor="let catName of allCategoryName">
+      <td class="pt-0 pb-0">{{ catName }}</td>
+    </tr>
+  </table>
+
+</details>
+
+
+<table class="table table table-bordered">
+  <tr *ngFor="let catName of allCategory ">
+    <td class="pt-0 pb-0">{{ catName.name }}</td>
+    <td class="pt-0 pb-0">{{ catName.description | textsorter:95 }}</td>
+  </tr>
+</table>
+
+<!--
+<section>
+  <input  type="checkbox"  id="cb1" [(ngModel)]="proba" [checked]="true">
+    <label for="cb1">Próba 1</label>
+
+
+
+</section>
+ -->
+
+<h6 class="mt-3 text-info">- Táblázatban megjelenítendő Product kulcsok | csak egy darab tömbben kell megadni</h6>
+<strong>{{ keys }}</strong>
+
+<h4>myClick is an event on the custom ClickDirective:</h4>
+<button (click)="data= keys ">
+  <input type="checkbox" value="true">
+  click with myClick
+</button>
+
+{{data | json}}
+
+
+
+<table class="table table table-bordered">
+  <thead>
+    <tr>
+      <th (click)="onColumnSelect(key)" *ngFor="let key of keys">{{ key | titlecase }}</th>
+      <th>action</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let product of ( allProduct |sorter:columnKey )">
+      <td *ngFor="let key of keys ">{{ product[key] | textsorter:55 }}</td>
+    </tr>
+  <tbody>
+</table>
+
+
+
+<!--
+<table class="table table table-bordered">
+  <thead>
+    <tr>
+      <th (click)="onColumnSelect('id')">#</th>
+      <th (click)="onColumnSelect('catId')">catId</th>
+      <th (click)="onColumnSelect('name')">Name</th>
+      <th (click)="onColumnSelect('description')">Description</th>
+      <th (click)="onColumnSelect('price')">Price</th>
+      <th (click)="onColumnSelect('stock')">Stock</th>
+      <th (click)="onColumnSelect('features')">Features</th>
+      <th (click)="onColumnSelect('active')">Active</th>
+      <th>action</th>
+    </tr>
+  </thead>
+    <tr *ngFor="let product of allProduct">
+      <td>{{ product.id }}</td>
+      <td>{{ product.cat }}</td>
+    </tr>
+  <tbody>
+</table>
+ -->
+
+
