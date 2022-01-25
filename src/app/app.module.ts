@@ -19,8 +19,9 @@ import { Cat07Component } from './page/cat07/cat07.component';
 import { Cat08Component } from './page/cat08/cat08.component';
 import { Cat09Component } from './page/cat09/cat09.component';
 import { MovieCardComponent } from './common/movie-card/movie-card.component';
+import { MoviePagerComponent } from './common/movie-pager/movie-pager.component';
 import { TextsorterPipe } from './pipe/textsorter.pipe';
-import { TestpageComponent } from './page/testpage/testpage.component';
+import { TestpageComponent } from './page/testpage/testpage.component'
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TestpageComponent } from './page/testpage/testpage.component';
     Cat08Component,
     Cat09Component,
     MovieCardComponent,
+    MoviePagerComponent
 TextsorterPipe,
 TestpageComponent
   ],
