@@ -41,7 +41,7 @@ import { TestpageComponent } from './page/testpage/testpage.component'
     Cat08Component,
     Cat09Component,
     MovieCardComponent,
-    MoviePagerComponent
+    MoviePagerComponent,
 TextsorterPipe,
 TestpageComponent
   ],
