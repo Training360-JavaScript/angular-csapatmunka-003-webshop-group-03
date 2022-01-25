@@ -21,6 +21,7 @@ import { Cat09Component } from './page/cat09/cat09.component';
 import { MovieCardComponent } from './common/movie-card/movie-card.component';
 import { TextsorterPipe } from './pipe/textsorter.pipe';
 import { TestpageComponent } from './page/testpage/testpage.component';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { TestpageComponent } from './page/testpage/testpage.component';
     Cat09Component,
     MovieCardComponent,
 TextsorterPipe,
-TestpageComponent
+TestpageComponent,
+SorterPipe
   ],
   imports: [
     BrowserModule,
