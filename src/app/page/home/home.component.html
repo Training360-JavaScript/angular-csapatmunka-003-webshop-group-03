@@ -1,8 +1,8 @@
 <div class="row">
   <h4>Kiemelt termékek</h4>
-  <app-movie-pager [productList]="productList | featured: false"></app-movie-pager>
+  <app-movie-pager [productList]="productList | featured:'true'"></app-movie-pager>
 </div>
 <div class="row">
   <h4>Akciós termékek</h4>
-  <app-movie-pager [productList]="productList | featured: false"></app-movie-pager>
+  <app-movie-pager [productList]="productList"></app-movie-pager>
 </div>

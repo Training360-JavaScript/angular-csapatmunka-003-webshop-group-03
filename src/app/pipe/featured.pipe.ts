@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FeaturedPipe implements PipeTransform {
 
-  transform(value: Product[] | null, prefix: string): Product[] | null {
+  transform(value: Product[], prefix: string): Product[] {
     if (!['true', 'false'].includes(prefix)) {
       console.log('Hibás vagy hiányzó frefix megadás. Csak true vagy false lehet!');
     }
