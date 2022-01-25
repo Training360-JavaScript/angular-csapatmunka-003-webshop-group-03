@@ -1,79 +1,8 @@
-<p>home works!</p>
-
-<!--
-<h1>!!! TESZT - 1 !!!</h1>
-
 <div class="row">
-  <h4>Kiemelt termékek | 'features: true' | véletlen 5 db</h4>
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Featured</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor=" let product of listOfProducts | featured:'true' | numberrandom:5 ">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.catId }}</td>
-        <td>{{ product.featured }}</td>
-      </tr>
-    </tbody>
-
-  </table>
+  <h4>Kiemelt termékek</h4>
+  <app-movie-pager [productList]="productList | featured: false"></app-movie-pager>
 </div>
-
-
-<h1 class="mt-4">!!! TESZT - 2 !!!</h1>
-
 <div class="row">
-  <h4>Akciós termékek | 'features: bármi' | véletlen 5 db</h4>
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Featured</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor=" let product of listOfProducts | numberrandom:5 ">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.catId }}</td>
-        <td>{{ product.featured }}</td>
-      </tr>
-    </tbody>
-
-  </table>
+  <h4>Akciós termékek</h4>
+  <app-movie-pager [productList]="productList | featured: false"></app-movie-pager>
 </div>
-
-
-<h1 class="mt-4">!!! TESZT - 3 !!!</h1>
-
-<div class="row">
-  <h4>Azonos kategóriájú filmek | 'features: bármi' | 'category': metódussal állítható | véletlen 7 db</h4>
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Featured</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor=" let product of listOfProducts">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.catId }}</td>
-        <td>{{ product.featured }}</td>
-      </tr>
-    </tbody>
-
-  </table>
-</div> -->

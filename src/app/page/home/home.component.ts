@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   }
 
   // A product tömb teljes tartalma
-  //listOfProducts: Product[] = this.productService.getAll();
+  productList: Product[] = this.productService.getAll();
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
   //listOfCategorizedProducts: Product[] = this.productService.getCategorized('');
