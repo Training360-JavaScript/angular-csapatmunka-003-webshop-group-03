@@ -8,7 +8,7 @@ import { Product } from 'src/app/model/product';
 })
 export class MoviePagerComponent implements OnInit {
 
-  @Input() productList!: Product [];
+  @Input() productList!: Product [] | null;
 
   constructor() { }
 
