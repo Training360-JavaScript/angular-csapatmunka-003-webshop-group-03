@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 // import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { Category } from 'src/app/model/category';
@@ -13,11 +14,23 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class TestpageComponent implements OnInit {
 
-  allCategory: Category[] = this.categoryService.getAllCategory();
+ // allCategory: Category[] = this.categoryService.getAllCategory();
+  allCategory$: Observable<Category[]> = this.categoryService.getAllCategory();
 
-  allCategoryName: string[] = this.categoryService.getAllCategoryName();
+  //allCategoryName: string[] = this.categoryService.getAllCategoryName();
+  allCategoryName: any = this.categoryService.getAllCategory().subscribe(
+    data => this.allCategoryName = data
+  );
 
-  allProduct: Product[] = this.productService.getAll();
+  //allProduct: Product[] = this.productService.getAll();
+  allProduct$: Observable<Product[]> = this.productService.getAll();
+
+  oneProduct$: Observable<Product> = this.productService.get(3);
+
+
+  //allProductInSameCategory = this.productService.getByCategory(5); // nem működik még
+
+
 
 
   allProductKeys = Object.keys(new Product);
@@ -45,6 +58,7 @@ export class TestpageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
   }
 
   // Táblázat fejlécére kattintáskor ABC-sorrendbe rendez a kívánt oszlop szerint.
@@ -61,6 +75,8 @@ export class TestpageComponent implements OnInit {
   // ----------------
 
 
+
+  proba = this.categoryService.getAllCategory();
 
 
 
