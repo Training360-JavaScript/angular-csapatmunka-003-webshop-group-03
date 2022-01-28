@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/category';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -32,7 +33,8 @@ export class Cat04Component implements OnInit {
   //= this.categoryService.getCategoryDetailes(this.categoryName);
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
+  // listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
+  allProduct$: Observable<Product[]> = this.productService.getAll();
 
   listing(listOfCategorizedProducts : Product[]):void {
     console.log(listOfCategorizedProducts)

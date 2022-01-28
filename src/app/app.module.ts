@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -23,7 +24,7 @@ import { MoviePagerComponent } from './common/movie-pager/movie-pager.component'
 import { TextsorterPipe } from './pipe/textsorter.pipe';
 import { TestpageComponent } from './page/testpage/testpage.component';
 import { SorterPipe } from './pipe/sorter.pipe';
-import { TestpageComponent } from './page/testpage/testpage.component'
+
 
 
 @NgModule({
@@ -45,14 +46,15 @@ import { TestpageComponent } from './page/testpage/testpage.component'
     Cat09Component,
     MovieCardComponent,
     MoviePagerComponent,
-TextsorterPipe,
-TestpageComponent,
-SorterPipe
+    TextsorterPipe,
+    TestpageComponent,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

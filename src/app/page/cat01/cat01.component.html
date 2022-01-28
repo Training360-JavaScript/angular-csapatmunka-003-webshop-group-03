@@ -6,7 +6,10 @@
 <h3 class="mt-5">Featured content:</h3>
 
 <div class="row mb-3">
+  <!--
   <app-movie-card *ngFor=" let product of listOfCategorizedProducts | featured:'true' | numberrandom:5 " [movie] = "product"></app-movie-card>
+  -->
+  <app-movie-card *ngFor=" let product of allProduct$ | async | featured:'true' | numberrandom:5 " [movie] = "product"></app-movie-card>
 </div>
 
 <label>Search movie:</label>
@@ -25,7 +28,10 @@
       </tr>
     </thead>
     <tbody>
+      <!--
       <tr *ngFor=" let product of listOfCategorizedProducts | filter: keyword">
+         -->
+      <tr *ngFor=" let product of allProduct$ | async | filter:'1':'catId' | sorter:columnKey:sortDirection | filter:keyword:'name'">
         <td>{{ product.id }}</td>
         <td>{{ product.name }}</td>
         <td>{{ product.catId }}</td>

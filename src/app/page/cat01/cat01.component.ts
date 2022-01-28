@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/category';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -34,6 +35,18 @@ export class Cat01Component implements OnInit {
   //= this.categoryService.getCategoryDetailes(this.categoryName);
 
   // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
+  //listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
+  allProduct$: Observable<Product[]> = this.productService.getAll();
+
+  // A táblázat/lista sorbarendezéséhez:
+  columnKey: string = '';
+  sortDirection: string = 'A...Z';
+  clickCounter: number = 0;
+  onColumnSelect(key: string): void {
+    (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
+    this.sortDirection = ( this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    this.columnKey = key;
+  }
+
 
 }
