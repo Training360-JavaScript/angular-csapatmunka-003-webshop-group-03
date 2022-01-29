@@ -24,6 +24,8 @@ import { MoviePagerComponent } from './common/movie-pager/movie-pager.component'
 import { TextsorterPipe } from './pipe/textsorter.pipe';
 import { TestpageComponent } from './page/testpage/testpage.component';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { AdminComponent } from './page/admin/admin.component';
+import { DataEditorComponent } from './common/data-editor/data-editor.component';
 
 
 
@@ -48,7 +50,9 @@ import { SorterPipe } from './pipe/sorter.pipe';
     MoviePagerComponent,
     TextsorterPipe,
     TestpageComponent,
-    SorterPipe
+    SorterPipe,
+    AdminComponent,
+    DataEditorComponent
   ],
   imports: [
     BrowserModule,

@@ -15,6 +15,7 @@ export class ConfigService {
 
   menuItems: IMenuItem[] = [
     {text: 'Home', link: '/', icon: 'home'},
+    {text: 'Admin', link: '/admin', icon: 'admin'},
     {text: 'Action', link: '/cat01'},
     {text: 'Animation', link: '/cat02'},
     {text: 'Crime', link: '/cat03'},
