@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-6 offset-3">
-    <form *ngIf="product$ | async as product">
+    <form *ngIf="product$ | async as product" (ngSubmit)="onUpdate(product)">
       <div class="form-group">
         <label>Name</label>
         <input [(ngModel)]="product.name" name="name" type="text" class="form-control" required>
@@ -21,10 +21,10 @@
         <label>Featured</label>
         <input [(ngModel)]="product.featured" name="featured" type="text" class="form-control" required>
       </div>
-      <button class="btn btn-primary mx-2">
+      <button class="btn btn-primary mx-2" type="submit">
         Save
       </button>
-      <button class="btn btn-danger mx-2">
+      <button class="btn btn-danger mx-2" type="button" (click)="onDelete(product.id)">
         Delete
       </button>
     </form>
