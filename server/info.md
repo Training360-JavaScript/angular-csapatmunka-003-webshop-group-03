@@ -1,6 +1,6 @@
 JSON server indítása:
 
-json-server --watch product.json
+json-server --watch server/product.json
 
 
 Resources
