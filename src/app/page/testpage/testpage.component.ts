@@ -17,10 +17,11 @@ export class TestpageComponent implements OnInit {
  // allCategory: Category[] = this.categoryService.getAllCategory();
   allCategory$: Observable<Category[]> = this.categoryService.getAllCategory();
 
-  //allCategoryName: string[] = this.categoryService.getAllCategoryName();
-  allCategoryName: any = this.categoryService.getAllCategory().subscribe(
-    data => this.allCategoryName = data
-  );
+  // allCategoryName: string[] = this.categoryService.getAllCategoryName();
+  // allCategoryName: any = this.categoryService.getAllCategory().subscribe(
+  //   data => this.allCategoryName = data
+  // );
+  allCategoryName: any;
 
   //allProduct: Product[] = this.productService.getAll();
   allProduct$: Observable<Product[]> = this.productService.getAll();
@@ -29,9 +30,6 @@ export class TestpageComponent implements OnInit {
 
 
   //allProductInSameCategory = this.productService.getByCategory(5); // nem működik még
-
-
-
 
   allProductKeys = Object.keys(new Product);
 
@@ -52,13 +50,49 @@ export class TestpageComponent implements OnInit {
   keyword: string = '';
 
 
+
     constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
   ) { }
 
-  ngOnInit(): void {
 
+  /* getHeroes(): void {
+    this.heroService.getHeroes()
+    .subscribe(heroes => this.heroes = heroes);
+  }
+
+  */
+ /*
+ getAllCategoryName(): string[] {
+   const key = 'name';
+   return this.listOfCategory.map( item => item[key]);
+  } */
+
+
+  array: any = getAllCategoryByKey();
+
+ getAllCategoryByKey(key: string = 'name' ): any {
+   this.allCategory$.subscribe(
+     data => {
+       //const key = 'name';
+       let arr = data.map( item => {
+         return item[key]
+        });
+        console.log(arr);
+        this.array = arr;
+        return arr;
+      }
+   )
+ }
+
+  ngOnInit(): void {
+    //this.getAllCategoryByKey()
+    /* this.allCategory$.subscribe(
+      //data => this.allCategoryName = JSON.parse(data)
+      data => this.array = JSON.parse(data)
+    )
+ */
   }
 
   // Táblázat fejlécére kattintáskor ABC-sorrendbe rendez a kívánt oszlop szerint.
