@@ -11,7 +11,7 @@ export class TextsorterPipe implements PipeTransform {
     // if (/^\d{4}-.*/.test(text)) return text;  // a 'stock' kulcsban dátum van string-ként
     if (String(text).length < prefix) return text;
 
-    // Az utolsó szó nem vágja le.
+    // Az utolsó szót nem vágja le.
     return `${String(text).slice(0, prefix).split(' ').slice(0,-1).join(' ')}...`;
 
     // Az utolsó szót is elvágja.

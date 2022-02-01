@@ -16,6 +16,10 @@ export class ConfigService {
   menuItems: IMenuItem[] = [
     {text: 'Home', link: '/', icon: 'home'},
     {text: 'Admin', link: '/admin', icon: 'admin'},
+    {text: 'Tesztoldal', link: '/test'},
+  ];
+
+  categoryMenuItems: IMenuItem[] = [
     {text: 'Action', link: '/cat01'},
     {text: 'Animation', link: '/cat02'},
     {text: 'Crime', link: '/cat03'},
@@ -24,8 +28,7 @@ export class ConfigService {
     {text: 'Romance', link: '/cat06'},
     {text: 'Fantasy', link: '/cat07'},
     {text: 'Sci-fi', link: '/cat08'},
-    {text: 'Horror', link: '/cat09'},
-    {text: 'Tesztoldal', link: '/test'},
+    {text: 'Horror', link: '/cat09'}
   ];
 
   constructor() { }

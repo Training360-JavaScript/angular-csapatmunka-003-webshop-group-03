@@ -10,6 +10,7 @@ export class NavigationComponent implements OnInit {
 
   appName: string = this.config.appName;
   menuItems: IMenuItem[] = this.config.menuItems;
+  categoryMenuItems: IMenuItem[] = this.config.categoryMenuItems;
 
   constructor(
     private config: ConfigService,

@@ -1,15 +1,32 @@
+.card-title {
+  height: 50px !important;
+  line-height: 50px !important;
+}
+
+.card-title p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.5;
+  display: inline-block;
+  vertical-align: middle;
+}
+
 .myCard {
-  width: 210px!important;
-  height: 600px!important;
+  width: 210px !important;
+  height: 600px !important;
 }
 
 .myCardImageDiv {
-  min-height: 210px!important;
-  max-height: 210px!important;
+  height: 230px !important;
   display: flex;
   align-items: center;
 }
 
-.card-body{
-  padding: 10px!important;
+.myCardImage {
+  max-height: 100% !important;
+  max-width: 100% !important;
+}
+
+.card-body {
+  padding: 10px !important;
 }
