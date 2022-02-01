@@ -9,4 +9,5 @@ export class Product {
   stock: string = '';
   featured: boolean = false;
   active: boolean = false;
+  link: string = '';
 }

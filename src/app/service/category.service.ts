@@ -19,7 +19,8 @@ export class CategoryService {
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
 
   // // A 'getAllCategory()' metódus továbbküldi a teljes category tömböt annak, aki azt meghívja.
@@ -38,9 +39,7 @@ export class CategoryService {
 
   listOfCategory: any = this.getAllCategory().subscribe(
     data => this.listOfCategory = data
-
   )
-
 
   getAllCategory(): Observable<Category[]> {
     return this.http.get<any>(`${this.apiUrl}${this.endPoint}`)
@@ -49,10 +48,14 @@ export class CategoryService {
       )
   }
 
+  getCategoryDetailes(categoryName: string = ''): Category | any {
+    if (!categoryName) return null;
 
+    categoryName = categoryName.toLowerCase();
+    const key = 'name';
 
-
-
+    return this.listOfCategory.filter( (item:any) => item[key].toLowerCase() === categoryName )[0];
+  }
 
   // A kategóriák nevét tartalmazó tömböt adja vissza.
   // pl.: [ "Action", "Animation", "Crime", "Drama", "Comedy", "Romance", "Fantasy", "Sci-fi", "Horror" ]

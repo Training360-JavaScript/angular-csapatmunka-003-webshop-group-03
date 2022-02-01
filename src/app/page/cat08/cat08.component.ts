@@ -1,4 +1,6 @@
+import { CategoryService } from './../../service/category.service';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/category';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -12,16 +14,16 @@ export class Cat08Component implements OnInit {
 
   constructor(
     private productService: ProductService,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit(): void {
   }
 
   categoryName: string = "Sci-fi"
-
+  //= this.categoryService.getCategoryDetailes(this.categoryName);
   keyword: string = ''
 
-  //Az adott kategória adatai
   categoryDetails: Category =
     {
       "id": 8,
@@ -29,8 +31,6 @@ export class Cat08Component implements OnInit {
       "description": "Science fiction movies are defined by a mixture of speculation and science. While fantasy will explain through or make use of magic and mysticism, science fiction will use the changes and trajectory of technology and science. Science fiction will often incorporate space, biology, energy, time, and any other observable science. Most of James Cameron's best movies lean heavily on science fiction.",
     }
 
-  //= this.categoryService.getCategoryDetailes(this.categoryName);
 
-  // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
+  allProduct$: Observable<Product[]> = this.productService.getAll();
 }

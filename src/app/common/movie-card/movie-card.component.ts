@@ -10,9 +10,11 @@ export class MovieCardComponent implements OnInit {
 
   @Input() movie!: Product
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.movie.image = `assets/img/${this.movie.id}.jpg`
   }
 
 
