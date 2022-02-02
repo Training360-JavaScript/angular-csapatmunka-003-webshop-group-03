@@ -1,9 +1,80 @@
 <p>Tesztoldal Józsinak</p>
+<form #categorySelectForm="ngForm">
+  <div class="row">
+    <div class="col-4">
+      <div class="form-group">
+        <select name="cat" id="" ngModel>
+          <option value="" disabled>Válassz kategóriát</option>
+          <option value="" >Mind az összes</option>
+          <option *ngFor="let cat of allCategory$ | async"
+            [ngValue]="cat">
+            {{cat.name}}
+          </option>
 
-{{ array | json }}
+        </select>
+
+      </div>
+    </div>
+  </div>
+
+  <p>category.name: {{ categorySelectForm.value['cat']['name'] | json }}</p>
+  <p>category.id: {{ categorySelectForm.value['cat']['id']}}</p>
+
+  <table class="table table-striped mt-3">
+    <thead>
+      <tr>
+        <th (click)="onColumnSelect('id')">#</th>
+        <th (click)="onColumnSelect('name')">Name</th>
+        <th>Category
+          <div class="form-group">
+            <select name="cat" id="" class="form-control">
+
+            </select>
+          </div>
+        </th>
+        <th (click)="onColumnSelect('featured')">Featured</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!--
+        <tr *ngFor=" let product of listOfCategorizedProducts | sorter:columnKey:sortDirection |filter:keyword:'name'">
+          {{ allProduct$ | async | filter:'1':'catId' | json}}
+        -->
+        <tr *ngFor=" let product of allProduct$ | async | filter:(categorySelectForm.value['cat']['id'] | json):'catId' | sorter:columnKey:sortDirection | filter:keyword:'name'">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.catId }}</td>
+          <td>{{ product.featured }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </form>
+
+<!-- {{ allProduct$ | async | filter:'1':'catId' | json}} -->
 
 
-.row>.col12>table.table>table-striped>thead>
+
+
+{{ allCategory$ | async | json }}
+
+
+<div class="row">
+  <div class="col12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 <!--
 <summary>Category Service...</summary>

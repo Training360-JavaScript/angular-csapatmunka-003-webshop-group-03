@@ -44,36 +44,30 @@
       "id": 9,
       "name": "Horror",
       "description": "The horror genre is centered upon depicting terrifying or macabre events for the sake of entertainment. A thriller might tease the possibility of a terrible event, whereas a horror film will deliver all throughout the film. The best horror movies are designed to get the heart pumping and to show us a glimpse of the unknown."
+    },
+    {
+      "id": 10,
+      "name": "-TESZT-",
+      "description": "The horror genre is centered upon depicting terrifying or macabre events for the sake of entertainment. A thriller might tease the possibility of a terrible event, whereas a horror film will deliver all throughout the film. The best horror movies are designed to get the heart pumping and to show us a glimpse of the unknown."
     }
   ],
   "product": [
     {
       "id": 1,
-      "catId": 3,
+      "catId": "6",
       "name": "Pushing Hands (Tui shou)",
-      "description": "Quisque ut erat. Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat. Praesent blandit. Nam nulla.",
+      "description": "átírva 2\n",
       "image": "http://dummyimage.com/194x100.png/dddddd/000000",
       "price": 46,
-      "stock": "2022-08-03",
-      "featured": false,
-      "active": true
-    },
-    {
-      "id": 2,
-      "catId": "1",
-      "name": "Petits Freres (Petits Frères)",
-      "description": "Nullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh. In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam.",
-      "image": "http://dummyimage.com/106x100.png/5fa2dd/ffffff",
-      "price": 50,
-      "stock": "2022-08-25",
+      "stock": "2022-08-06",
       "featured": true,
       "active": true
     },
     {
       "id": 3,
-      "catId": 1,
+      "catId": "4",
       "name": "Thief of Bagdad, The",
-      "description": "Morbi ut odio.",
+      "description": "léggömb hámozó gépppp\n\n",
       "image": "http://dummyimage.com/177x100.png/5fa2dd/ffffff",
       "price": 33,
       "stock": "2022-09-15",
@@ -82,29 +76,29 @@
     },
     {
       "id": 4,
-      "catId": 5,
+      "catId": "3",
       "name": "L!fe Happens",
-      "description": "In quis justo. Maecenas rhoncus aliquam lacus. Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.",
+      "description": "Próbaként átírt szöveg.\n",
       "image": "http://dummyimage.com/199x100.png/ff4444/ffffff",
       "price": 50,
       "stock": "2022-05-08",
-      "featured": true,
-      "active": true
+      "featured": false,
+      "active": false
     },
     {
       "id": 6,
-      "catId": 1,
+      "catId": "2",
       "name": "Pink Panther, The",
       "description": "Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus. Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam. Nam tristique tortor eu pede.",
       "image": "http://dummyimage.com/250x100.png/5fa2dd/ffffff",
       "price": 47,
       "stock": "2022-01-26",
-      "featured": true,
+      "featured": false,
       "active": false
     },
     {
       "id": 7,
-      "catId": 3,
+      "catId": "1",
       "name": "It Happened Tomorrow",
       "description": "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis. Sed ante. Vivamus tortor. Duis mattis egestas metus. Aenean fermentum.",
       "image": "http://dummyimage.com/141x100.png/dddddd/000000",

@@ -70,7 +70,7 @@ export class TestpageComponent implements OnInit {
   } */
 
 
-  array: any = getAllCategoryByKey();
+  //array: any = getAllCategoryByKey();
 
  getAllCategoryByKey(key: string = 'name' ): any {
    this.allCategory$.subscribe(
@@ -112,7 +112,7 @@ export class TestpageComponent implements OnInit {
 
   proba = this.categoryService.getAllCategory();
 
-
+  selectedCategoryName: string = '';
 
 
 

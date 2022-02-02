@@ -23,7 +23,7 @@ export class FilterPipe<T extends {[key: string]: any}> implements PipeTransform
     // Ez az egész kifejezésben keres, az egyezés a kifejezésen belül bárhol lehet.
     return value.filter( item => {
       const data = String(item[key]).toLowerCase();
-      return data.includes(phrase);
+      return data.includes(String(phrase));
     });
 
     // Az egyezést a kifejezés elejéről keresi.
