@@ -1,3 +1,4 @@
+import { CategoryService } from './../../service/category.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/model/category';
@@ -11,20 +12,6 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class Cat01Component implements OnInit {
 
-  constructor(
-    private productService: ProductService,
-  ) {
-  }
-
-  ngOnInit(): void {
-  }
-
-  categoryName: string = "Action"
-
-  keyword: string = ''
-
-
-  //Az adott kategória adatai
   categoryDetails: Category =
     {
       "id": 1,
@@ -32,11 +19,24 @@ export class Cat01Component implements OnInit {
       "description": "Movies in the action genre are defined by risk and stakes. While many movies may feature an action sequence, to be appropriately categorized inside the action genre, the bulk of the content must be action-oriented, including fight scenes, stunts, car chases, and general danger.",
     }
 
-  //= this.categoryService.getCategoryDetailes(this.categoryName);
+    categoryName: string = "Action"
+    //listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
 
-  // A product tömb kategóriával szűrt tartalma. A szűrési változó a kategória neve.
-  //listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
-  allProduct$: Observable<Product[]> = this.productService.getAll();
+    keyword: string = ''
+
+    allProduct$: Observable<Product[]> = this.productService.getAll();
+
+  constructor(
+    private productService: ProductService,
+    private categoryService: CategoryService
+  ) {
+  }
+
+
+  ngOnInit(): void {
+    //this.categoryDetails = this.categoryService.getCategoryDetailes(this.categoryName)
+    //console.log(this.categoryDetails)
+  }
 
   // A táblázat/lista sorbarendezéséhez:
   columnKey: string = '';
@@ -44,7 +44,7 @@ export class Cat01Component implements OnInit {
   clickCounter: number = 0;
   onColumnSelect(key: string): void {
     (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
-    this.sortDirection = ( this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
     this.columnKey = key;
   }
 

@@ -14,6 +14,7 @@
         <div class="row ml-2">
           <p>_catId: <span style='color: red'>{{ product.catId | json}}</span></p>
           <p class="pl-4">#se: <span style='color: red'>{{se.value }}</span></p>
+          <p class="pl-4">id: <span style='color: red'>{{product.id }}</span></p>
         </div>
 
         <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
@@ -38,6 +39,10 @@
       </div>
 
 
+      <div class="form-group">
+        <label for="text_link">Link</label>
+        <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control" required>
+      </div>
 
 
       <div class="form-group">

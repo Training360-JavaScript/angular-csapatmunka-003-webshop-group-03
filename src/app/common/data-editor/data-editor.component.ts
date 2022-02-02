@@ -59,9 +59,18 @@ export class DataEditorComponent implements OnInit {
 
 
   onUpdate(product: Product): void {
+    // console.log(product)
+    // A html input-jai string-et adnak vissza, ezt visszaállítja number formátummá.
+    product.id = product.id*1;
+    product.catId = product.catId*1;
+    product.price = product.price*1;
+
     this.productService.update(product).subscribe(
       // product => console.log(product),
-      () => this.router.navigate(['/', 'admin']),
+      (item) => {
+        this.router.navigate(['/', 'admin'])
+        // console.log(item);
+      },
       err => console.log(err)
     )
   }

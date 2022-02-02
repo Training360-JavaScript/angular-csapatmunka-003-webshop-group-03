@@ -1,43 +1,27 @@
-<h1 class="text-center mt-5"> {{ categoryDetails.name }} movies</h1>
-<h3 class="mt-5"> You should know about the {{ categoryDetails.name }} genre:</h3>
+<h1 class="text-center mt-4"> {{ categoryDetails.name }} movies</h1>
+<h3 class="mt-4"> You should know about the {{ categoryDetails.name }} genre:</h3>
 
 <p> {{ categoryDetails.description }} </p>
 
-<h3 class="mt-5">Featured content:</h3>
+<h3 class="mt-4 ml-3">Featured content in {{ categoryDetails.name }} genre</h3>
 
-<div class="row mb-3">
-  <!--
-  <app-movie-card *ngFor=" let product of listOfCategorizedProducts | featured:'true' | numberrandom:5 " [movie] = "product"></app-movie-card>
-  -->
-  <app-movie-card *ngFor=" let product of allProduct$ | async | featured:'true' | numberrandom:5 " [movie] = "product"></app-movie-card>
+<div class="row mt-3 mb-5">
+  <app-movie-pager [productList]="allProduct$ | async | filter:'1':'catId' |featured:'true'"></app-movie-pager>
 </div>
-
-<label>Search movie:</label>
-<input type="text" class="form-control" [(ngModel)]="keyword">
-
-<h3 class="mt-5">All movies available in {{ categoryDetails.name }} genre:</h3>
 
 <div class="row">
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Featured</th>
-      </tr>
-    </thead>
-    <tbody>
-      <!--
-      <tr *ngFor=" let product of listOfCategorizedProducts | filter: keyword">
-         -->
-      <tr *ngFor=" let product of allProduct$ | async | filter:'1':'catId' | sorter:columnKey:sortDirection | filter:keyword:'name'">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.catId }}</td>
-        <td>{{ product.featured }}</td>
-      </tr>
-    </tbody>
-
-  </table>
+  <div class="col-6 ml-4 mr-3">
+    <h3 *ngIf="!keyword">All movies available in {{ categoryDetails.name }} genre:</h3>
+    <h3 *ngIf="keyword">Movies you searched for:</h3>
+  </div>
+  <div class="ml-5 col-2 text-right pr-1">
+    <h5 class="mb-0 pt-1">Search movie:</h5>
+  </div>
+  <div class="col-3 pl-1">
+    <input type="text" class="form-control" [(ngModel)]="keyword">
+  </div>
 </div>
+
+<app-movie-pager
+  [productList]="allProduct$ | async | filter:'1':'catId' | sorter:columnKey:sortDirection | filter:keyword:'name'">
+</app-movie-pager>
