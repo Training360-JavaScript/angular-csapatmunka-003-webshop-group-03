@@ -57,6 +57,28 @@ export class CategoryService {
     return this.listOfCategory.filter( (item:any) => item[key].toLowerCase() === categoryName )[0];
   }
 
+
+
+  allCategory$: Observable<Category[]> = this.getAllCategory();
+
+  categoryData:any = 'adat'
+
+  gCategoryDetails(name: string): any {
+    this.allCategory$.subscribe(
+      data => {
+        console.log(name);
+        console.log(data);
+        let data_2;
+        data_2 = data.filter(item => item.name === name)[0].description;
+        this.categoryData=data_2;
+        console.log(data_2);
+        return data_2;
+        //return 'skdfj'
+      }
+    )
+  }
+
+
   // A kategóriák nevét tartalmazó tömböt adja vissza.
   // pl.: [ "Action", "Animation", "Crime", "Drama", "Comedy", "Romance", "Fantasy", "Sci-fi", "Horror" ]
   /* _getAllCategoryName(): string[] {

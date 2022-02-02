@@ -14,7 +14,7 @@ import { ProductService } from 'src/app/service/product.service';
 })
 export class TestpageComponent implements OnInit {
 
- // allCategory: Category[] = this.categoryService.getAllCategory();
+  // allCategory: Category[] = this.categoryService.getAllCategory();
   allCategory$: Observable<Category[]> = this.categoryService.getAllCategory();
 
   // allCategoryName: string[] = this.categoryService.getAllCategoryName();
@@ -51,7 +51,7 @@ export class TestpageComponent implements OnInit {
 
 
 
-    constructor(
+  constructor(
     private categoryService: CategoryService,
     private productService: ProductService,
   ) { }
@@ -63,30 +63,72 @@ export class TestpageComponent implements OnInit {
   }
 
   */
- /*
- getAllCategoryName(): string[] {
-   const key = 'name';
-   return this.listOfCategory.map( item => item[key]);
-  } */
+  /*
+  getAllCategoryName(): string[] {
+    const key = 'name';
+    return this.listOfCategory.map( item => item[key]);
+   } */
+
+  // ----------------------------------------------
+  _categoryDetails: Category =
+    {
+      "id": 1,
+      "name": "Action",
+      "description": "Movies in the action genre are defined by risk and stakes. While many movies may feature an action sequence, to be appropriately categorized inside the action genre, the bulk of the content must be action-oriented, including fight scenes, stunts, car chases, and general danger.",
+    }
 
 
-  //array: any = getAllCategoryByKey();
 
- getAllCategoryByKey(key: string = 'name' ): any {
-   this.allCategory$.subscribe(
-     data => {
-       //const key = 'name';
-       let arr = data.map( item => {
-         return item[key]
-        });
-        console.log(arr);
-        this.array = arr;
-        return arr;
+    // array: any = getAllCategoryByKey();
+
+    // getAllCategoryByKey(key: string = 'name'): any {
+    //   this.allCategory$.subscribe(
+    //     data => {
+    //       //const key = 'name';
+    //       let arr = data.map(item => {
+    //         return item[key]
+    //       });
+    //       console.log(arr);
+    //       this.array = arr;
+    //       return arr;
+    //     }
+    //     )
+    //   }
+
+
+
+  categoryDetails: any = 'kategória leírása'
+
+  getCategoryDetails(name: string): void {
+    this.allCategory$.subscribe(
+      data => {
+        this.categoryDetails = data.filter(item => item.name === name)[0];
       }
-   )
- }
+    )
+  }
+
+  //catDetails=this.categoryService.gCategoryDetails('Drama')
+  // catDetails=this.categoryService.gCategoryDetails('Crime').this.service.function
+  //   .subscribe(arg => this.property = arg);
+
+  //catDetails: any = 'safg';
+  catDetails = 'df'
+
+
+
 
   ngOnInit(): void {
+    this.getCategoryDetails('Drama');
+
+    //this.catDetails = this.categoryService.gCategoryDetails('Crime')
+
+    // this.allCategory$.subscribe(
+    //   data => {
+    //     console.log(data[1].name);
+    //     this.categoryDetails = data.filter(item => item.name === 'Action')[0].description;
+    //   }
+    // )
+
     //this.getAllCategoryByKey()
     /* this.allCategory$.subscribe(
       //data => this.allCategoryName = JSON.parse(data)
@@ -102,7 +144,7 @@ export class TestpageComponent implements OnInit {
   onColumnSelect(key: string): void {
     (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
     // console.log(this.clickCounter) ;
-    this.sortDirection = ( this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
     // console.log(this.sortDirection);
     this.columnKey = key;
   }

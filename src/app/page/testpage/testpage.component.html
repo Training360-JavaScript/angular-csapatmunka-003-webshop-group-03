@@ -1,4 +1,18 @@
 <p>Tesztoldal Józsinak</p>
+
+{{ categoryDetails | json}}
+
+<br>
+<br>
+{{ catDetails | json}}
+<br>
+<br>
+----
+<br>
+
+{{ allCategory$ | async | filter:'4':'id' | filter:'':'name' | json}}
+
+
 <form #categorySelectForm="ngForm">
   <div class="row">
     <div class="col-4">

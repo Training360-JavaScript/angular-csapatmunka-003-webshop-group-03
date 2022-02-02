@@ -18,18 +18,29 @@ export class Cat06Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryDetails(this.categoryName);
+  }
+
+   // A megadott nevű kategória objektumát adja vissza.
+  getCategoryDetails(name: string): void {
+  this.categoryService.getAllCategory().subscribe(
+    data => {
+      this.categoryDetails = data.filter(item => item.name === name)[0];
+    }
+  )
   }
 
   categoryName: string = "Romance"
   //= this.categoryService.getCategoryDetailes(this.categoryName);
   keyword: string = ''
 
-  categoryDetails: Category =
-    {
-      "id": 6,
-      "name": "Romance",
-      "description": "The romance genre is defined by intimate relationships. Sometimes these movies can have a darker twist, but the idea is to lean on the natural conflict derived from the pursuit of intimacy and love.",
-    }
+  categoryDetails: Category = new Category();
+  // categoryDetails: Category =
+  //   {
+  //     "id": 6,
+  //     "name": "Romance",
+  //     "description": "The romance genre is defined by intimate relationships. Sometimes these movies can have a darker twist, but the idea is to lean on the natural conflict derived from the pursuit of intimacy and love.",
+  //   }
 
   allProduct$: Observable<Product[]> = this.productService.getAll();
 

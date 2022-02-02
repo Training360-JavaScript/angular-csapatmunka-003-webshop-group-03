@@ -18,18 +18,29 @@ export class Cat07Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryDetails(this.categoryName);
+  }
+
+   // A megadott nevű kategória objektumát adja vissza.
+  getCategoryDetails(name: string): void {
+  this.categoryService.getAllCategory().subscribe(
+    data => {
+      this.categoryDetails = data.filter(item => item.name === name)[0];
+    }
+  )
   }
 
   categoryName: string = "Fantasy"
   //= this.categoryService.getCategoryDetailes(this.categoryName);
   keyword: string = ''
 
-  categoryDetails: Category =
-    {
-      "id": 7,
-      "name": "Fantasy",
-      "description": "The fantasy genre is defined by both circumstance and setting inside a fictional universe with an unrealistic set of natural laws. The possibilities of fantasy are nearly endless, but the movies will often be inspired by or incorporate human myths. The genre often adheres to general human psychology and societal behavior while incorporating non-scientific concepts like magic, mythical creatures, and supernatural elements.",
-    }
+  categoryDetails: Category = new Category();
+  // categoryDetails: Category =
+  //   {
+  //     "id": 7,
+  //     "name": "Fantasy",
+  //     "description": "The fantasy genre is defined by both circumstance and setting inside a fictional universe with an unrealistic set of natural laws. The possibilities of fantasy are nearly endless, but the movies will often be inspired by or incorporate human myths. The genre often adheres to general human psychology and societal behavior while incorporating non-scientific concepts like magic, mythical creatures, and supernatural elements.",
+  //   }
 
 
   allProduct$: Observable<Product[]> = this.productService.getAll();

@@ -18,6 +18,16 @@ export class Cat05Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryDetails(this.categoryName);
+  }
+
+   // A megadott nevű kategória objektumát adja vissza.
+  getCategoryDetails(name: string): void {
+  this.categoryService.getAllCategory().subscribe(
+    data => {
+      this.categoryDetails = data.filter(item => item.name === name)[0];
+    }
+  )
   }
 
   categoryName: string = "Comedy"
@@ -25,12 +35,13 @@ export class Cat05Component implements OnInit {
 
   keyword: string = ''
 
-  categoryDetails: Category =
-    {
-      "id": 5,
-      "name": "Comedy",
-      "description": "The comedy genre is defined by events that are intended to make someone laugh, no matter if the story is macabre, droll, or zany. Comedy can be found in most movies, but if the majority of the film is intended to be a comedy you may safely place it in this genre. The best comedy movies range throughout this entire spectrum of humor.",
-    }
+  categoryDetails: Category = new Category();
+  // categoryDetails: Category =
+  //   {
+  //     "id": 5,
+  //     "name": "Comedy",
+  //     "description": "The comedy genre is defined by events that are intended to make someone laugh, no matter if the story is macabre, droll, or zany. Comedy can be found in most movies, but if the majority of the film is intended to be a comedy you may safely place it in this genre. The best comedy movies range throughout this entire spectrum of humor.",
+  //   }
 
   allProduct$: Observable<Product[]> = this.productService.getAll();
 }

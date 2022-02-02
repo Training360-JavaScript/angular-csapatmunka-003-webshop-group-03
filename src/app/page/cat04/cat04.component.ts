@@ -18,6 +18,16 @@ export class Cat04Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryDetails(this.categoryName);
+  }
+
+   // A megadott nevű kategória objektumát adja vissza.
+  getCategoryDetails(name: string): void {
+  this.categoryService.getAllCategory().subscribe(
+    data => {
+      this.categoryDetails = data.filter(item => item.name === name)[0];
+    }
+  )
   }
 
   categoryName: string = "Drama"
@@ -25,12 +35,13 @@ export class Cat04Component implements OnInit {
 
   keyword: string = ''
 
-    categoryDetails: Category =
-    {
-      "id": 4,
-      "name": "Drama",
-      "description": "The drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences. Drama is a very broad category and untethered to any era — from movies based on Shakespeare to contemporary narratives.",
-    }
+  categoryDetails: Category = new Category();
+    // categoryDetails: Category =
+    // {
+    //   "id": 4,
+    //   "name": "Drama",
+    //   "description": "The drama genre is defined by conflict and often looks to reality rather than sensationalism. Emotions and intense situations are the focus, but where other genres might use unique or exciting moments to create a feeling, movies in the drama genre focus on common occurrences. Drama is a very broad category and untethered to any era — from movies based on Shakespeare to contemporary narratives.",
+    // }
 
   allProduct$: Observable<Product[]> = this.productService.getAll();
 
