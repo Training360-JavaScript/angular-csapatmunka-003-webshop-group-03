@@ -23,7 +23,7 @@ export class Cat01Component implements OnInit {
     categoryName: string = "Action"
     //listOfCategorizedProducts: Product[] = this.productService.getCategorized(this.categoryDetails.name);
 
-    keyword: string = ''
+  //  keyword: string = ''
 
     allProduct$: Observable<Product[]> = this.productService.getAll();
 
@@ -50,14 +50,14 @@ export class Cat01Component implements OnInit {
   }
 
   // A táblázat/lista sorbarendezéséhez:
-  columnKey: string = '';
-  sortDirection: string = 'A...Z';
-  clickCounter: number = 0;
-  onColumnSelect(key: string): void {
-    (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
-    this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
-    this.columnKey = key;
-  }
+  // columnKey: string = '';
+  // sortDirection: string = 'A...Z';
+  // clickCounter: number = 0;
+  // onColumnSelect(key: string): void {
+  //   (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
+  //   this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+  //   this.columnKey = key;
+  // }
 
 
 }

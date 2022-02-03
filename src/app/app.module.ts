@@ -26,6 +26,7 @@ import { TestpageComponent } from './page/testpage/testpage.component';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { AdminComponent } from './page/admin/admin.component';
 import { DataEditorComponent } from './common/data-editor/data-editor.component';
+import { MovieListComponent } from './common/movie-list/movie-list.component';
 
 
 
@@ -52,7 +53,8 @@ import { DataEditorComponent } from './common/data-editor/data-editor.component'
     TestpageComponent,
     SorterPipe,
     AdminComponent,
-    DataEditorComponent
+    DataEditorComponent,
+    MovieListComponent
   ],
   imports: [
     BrowserModule,

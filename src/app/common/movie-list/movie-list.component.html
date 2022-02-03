@@ -1,0 +1,42 @@
+<!-- <p>movie-list works!</p>
+
+{{ productList }}
+{{ categoryDetails | json }} -->
+
+<div class="row">
+  <div class="col-6 ml-4 mr-3">
+    <h3 *ngIf="!keyword">All movies available in {{ categoryDetails.name }} genre:</h3>
+    <h3 *ngIf="keyword">Movies you searched for:</h3>
+  </div>
+  <div class="ml-5 col-2 text-right pr-1">
+    <h5 class="mb-0 pt-1">Search movie:</h5>
+  </div>
+  <div class="col-3 pl-1">
+    <input type="text" class="form-control" [(ngModel)]="keyword">
+  </div>
+</div>
+
+
+<div class="d-flex justify-content-around py-4">
+  <button class="btn btn-info" (click)="onColumnSelect('name')">
+    sort of name
+    <i *ngIf="icon === 1" class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
+    <i *ngIf="icon === 2" class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
+  </button>
+
+  <button class="btn btn-info" (click)="onColumnSelect('price')">
+    sort of price
+    <i *ngIf="icon === 3" class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+    <i *ngIf="icon === 4" class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+  </button>
+</div>
+
+
+
+<div class="container ">
+  <div class="row">
+    <div class="col-2 px-3 movie__card" *ngFor="let product of productList | filter:keyword:'name' | sorter:columnKey:sortDirection">
+      <app-movie-card [movie]="product"></app-movie-card>
+    </div>
+  </div>
+</div>

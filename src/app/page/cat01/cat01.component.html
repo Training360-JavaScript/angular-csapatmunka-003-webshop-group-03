@@ -6,10 +6,10 @@
 <h3 class="mt-4 ml-3">Featured content in {{ categoryDetails.name }} genre</h3>
 
 <div class="row mt-3 mb-5">
-  <app-movie-pager [productList]="allProduct$ | async | filter:'1':'catId' |featured:'true'"></app-movie-pager>
+  <app-movie-pager [productList]="allProduct$ | async | filter:'1':'catId' | featured:'true' | slice:0:5"></app-movie-pager>
 </div>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-6 ml-4 mr-3">
     <h3 *ngIf="!keyword">All movies available in {{ categoryDetails.name }} genre:</h3>
     <h3 *ngIf="keyword">Movies you searched for:</h3>
@@ -20,8 +20,16 @@
   <div class="col-3 pl-1">
     <input type="text" class="form-control" [(ngModel)]="keyword">
   </div>
-</div>
+</div> -->
 
+<!--
+{{allProduct$ | async | filter:'1':'catId' | filter:keyword:'name' | json}}
 <app-movie-pager
   [productList]="allProduct$ | async | filter:'1':'catId' | sorter:columnKey:sortDirection | filter:keyword:'name'">
-</app-movie-pager>
+</app-movie-pager> -->
+
+<app-movie-list
+  [productList]="allProduct$ | async | filter:'1':'catId' "
+  [categoryDetails] = "categoryDetails"
+>
+</app-movie-list>

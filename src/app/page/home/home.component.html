@@ -1,8 +1,18 @@
 <div class="row">
   <h4>Kiemelt termékek</h4>
+  <app-movie-pager [productList]="allProduct$ | async | featured:'true' | slice:0:5"></app-movie-pager>
+</div>
+<div class="row">
+  <h4>Akciós termékek</h4>
+  <app-movie-pager [productList]="allProduct$ | async | numberrandom:5"></app-movie-pager>
+</div>
+
+
+<!-- <div class="row">
+  <h4>Kiemelt termékek</h4>
   <app-movie-pager [productList]="allProduct$ | async | featured:'true'"></app-movie-pager>
 </div>
 <div class="row">
   <h4>Akciós termékek</h4>
   <app-movie-pager [productList]="allProduct$ | async"></app-movie-pager>
-</div>
+</div> -->
