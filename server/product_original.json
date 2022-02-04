@@ -44,11 +44,6 @@
       "id": 9,
       "name": "Horror",
       "description": "The horror genre is centered upon depicting terrifying or macabre events for the sake of entertainment. A thriller might tease the possibility of a terrible event, whereas a horror film will deliver all throughout the film. The best horror movies are designed to get the heart pumping and to show us a glimpse of the unknown."
-    },
-    {
-      "id": 10,
-      "name": "-TESZT-",
-      "description": "The horror genre is centered upon depicting terrifying or macabre events for the sake of entertainment. A thriller might tease the possibility of a terrible event, whereas a horror film will deliver all throughout the film. The best horror movies are designed to get the heart pumping and to show us a glimpse of the unknown."
     }
   ],
   "product": [
@@ -58,10 +53,10 @@
       "name": "Pushing Hands",
       "description": "All the while, Master Chu tries to find his place in the foreign American world.",
       "image": "1.jpg",
-      "price": 52,
+      "price": 46,
       "stock": "2022-08-03",
-      "featured": true,
-      "active": false,
+      "featured": false,
+      "active": true,
       "link": "https://www.imdb.com/title/tt0105652/?ref_=nv_sr_srsg_0"
     },
     {
@@ -70,7 +65,7 @@
       "name": "Petits Freres",
       "description": "Talia runs away from home taking her beloved dog with her. When her dog is stolen Talia enlists the help of a gang of boys to help her find her pet.",
       "image": "2.jpg",
-      "price": 45,
+      "price": 50,
       "stock": "2022-08-25",
       "featured": true,
       "active": true,
@@ -90,7 +85,7 @@
     },
     {
       "id": 4,
-      "catId": 3,
+      "catId": 5,
       "name": "L!fe Happens",
       "description": "BFFs Kim and Deena fight to maintain normalcy in their lives after Kim gets pregnant and has a baby.",
       "image": "4.jpg",

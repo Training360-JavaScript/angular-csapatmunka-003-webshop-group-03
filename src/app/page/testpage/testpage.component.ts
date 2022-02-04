@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, reduce } from 'rxjs';
 // import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { Category } from 'src/app/model/category';
@@ -165,6 +165,20 @@ export class TestpageComponent implements OnInit {
   onEdit(): void {
     this.formDisabler=!this.formDisabler;
   }
+  result: number[] = [];
 
+
+  dataCopy() {
+    this.allProduct$.subscribe(
+      data => {
+        console.log(data)
+        for (let i:number = 0; i<data.length; i++) {
+          this.result.push(data[i].id);
+        }
+        console.log(this.result)
+      }
+
+    )
+}
 
 }
