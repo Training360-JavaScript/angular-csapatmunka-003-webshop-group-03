@@ -158,4 +158,13 @@ export class TestpageComponent implements OnInit {
 
 
 
+  formDisabler: boolean = true;
+
+  product$: Observable<Product> = this.productService.get(3);
+
+  onEdit(): void {
+    this.formDisabler=!this.formDisabler;
+  }
+
+
 }
