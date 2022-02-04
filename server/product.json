@@ -54,14 +54,14 @@
   "product": [
     {
       "id": 1,
-      "catId": 6,
+      "catId": 1,
       "name": "Pushing Hands",
       "description": "All the while, Master Chu tries to find his place in the foreign American world.",
-      "image": "http://dummyimage.com/194x100.png/dddddd/000000",
-      "price": 45,
+      "image": "2.jpg",
+      "price": 52,
       "stock": "2022-08-03",
       "featured": true,
-      "active": true,
+      "active": false,
       "link": "https://www.imdb.com/title/tt0105652/?ref_=nv_sr_srsg_0"
     },
     {
@@ -70,10 +70,10 @@
       "name": "Petits Freres",
       "description": "Talia runs away from home taking her beloved dog with her. When her dog is stolen Talia enlists the help of a gang of boys to help her find her pet.",
       "image": "http://dummyimage.com/106x100.png/5fa2dd/ffffff",
-      "price": 50,
+      "price": 45,
       "stock": "2022-08-25",
-      "featured": false,
-      "active": false,
+      "featured": true,
+      "active": true,
       "link": "https://www.imdb.com/title/tt0184819/?ref_=ttmi_tt"
     },
     {

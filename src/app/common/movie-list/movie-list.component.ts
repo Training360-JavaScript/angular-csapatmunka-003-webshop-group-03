@@ -32,7 +32,8 @@ export class MovieListComponent implements OnInit {
     this.columnKey = key;
 
     if (key === 'name') this.icon = (this.sortDirection === 'A...Z') ? 1 : 2;
-    if (key === 'price') this.icon = (this.sortDirection === 'A...Z') ? 3 : 4;
+    if (key === 'stock') this.icon = (this.sortDirection === 'A...Z') ? 3 : 4;
+    if (key === 'price') this.icon = (this.sortDirection === 'A...Z') ? 5 : 6;
 
   }
 

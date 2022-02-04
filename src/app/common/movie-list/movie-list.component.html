@@ -18,16 +18,28 @@
 
 
 <div class="d-flex justify-content-around py-4">
-  <button class="btn btn-info" (click)="onColumnSelect('name')">
-    sort of name
+  <button class="btn btn-info btn-lg" (click)="onColumnSelect('name')">
+    <i class="fa fa-film" aria-hidden="true"></i>
+    sort by name
+    <i *ngIf="!icon || icon > 2" class="fa fa-sort" aria-hidden="true"></i>
     <i *ngIf="icon === 1" class="fa fa-sort-alpha-asc" aria-hidden="true"></i>
     <i *ngIf="icon === 2" class="fa fa-sort-alpha-desc" aria-hidden="true"></i>
   </button>
 
-  <button class="btn btn-info" (click)="onColumnSelect('price')">
-    sort of price
-    <i *ngIf="icon === 3" class="fa fa-sort-amount-asc" aria-hidden="true"></i>
-    <i *ngIf="icon === 4" class="fa fa-sort-amount-desc" aria-hidden="true"></i>
+  <button class="btn btn-info btn-lg" (click)="onColumnSelect('stock')">
+    <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+    sort by stock
+    <i *ngIf="!icon || icon < 3 || icon > 4" class="fa fa-sort" aria-hidden="true"></i>
+    <i *ngIf="icon === 3" class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+    <i *ngIf="icon === 4" class="fa fa-sort-numeric-desc" aria-hidden="true"></i>
+  </button>
+
+  <button class="btn btn-info btn-lg" (click)="onColumnSelect('price')">
+    <i class="fa fa-usd" aria-hidden="true"></i>
+    sort by price
+    <i *ngIf="!icon || icon < 5" class="fa fa-sort" aria-hidden="true"></i>
+    <i *ngIf="icon === 5" class="fa fa-sort-amount-asc" aria-hidden="true"></i>
+    <i *ngIf="icon === 6" class="fa fa-sort-amount-desc" aria-hidden="true"></i>
   </button>
 </div>
 
