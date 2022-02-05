@@ -18,6 +18,16 @@ export class Cat03Component implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategoryDetails(this.categoryName);
+  }
+
+   // A megadott nevű kategória objektumát adja vissza.
+  getCategoryDetails(name: string): void {
+  this.categoryService.getAllCategory().subscribe(
+    data => {
+      this.categoryDetails = data.filter(item => item.name === name)[0];
+    }
+  )
   }
 
   categoryName: string = "Crime"
@@ -25,12 +35,13 @@ export class Cat03Component implements OnInit {
   keyword: string = ''
 
 
-  categoryDetails: Category =
-    {
-      "id": 3,
-      "name": "Crime",
-      "description": "The crime genre deals with both sides of the criminal justice system but does not focus on legislative matters or civil suits and legal actions. The best crime movies often occupy moral gray areas where heroes and villains are much harder to define. Many of Martin Scorsese's best movies or Quentin Tarantino's movies fall within the crime genre.",
-    }
+  categoryDetails: Category = new Category();
+  // categoryDetails: Category =
+  //   {
+  //     "id": 3,
+  //     "name": "Crime",
+  //     "description": "The crime genre deals with both sides of the criminal justice system but does not focus on legislative matters or civil suits and legal actions. The best crime movies often occupy moral gray areas where heroes and villains are much harder to define. Many of Martin Scorsese's best movies or Quentin Tarantino's movies fall within the crime genre.",
+  //   }
 
   allProduct$: Observable<Product[]> = this.productService.getAll();
 
