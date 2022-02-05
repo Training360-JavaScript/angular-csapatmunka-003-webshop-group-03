@@ -1,0 +1,190 @@
+
+
+
+
+<div class="container-fluid" >
+
+  <form *ngIf="product$ as product">
+    <fieldset>
+      <div class="d-flex flex-column flex-md-row" style="border: 1px solid #888;">
+
+        <div class="col-md-9">
+
+          <form>
+            <fieldset [disabled]="formDisabler">
+
+
+              <div class="container form-row">
+
+                <div class="form-group " style="max-width: 3.2rem;">
+                  <label for="inputEmail4">#id</label>
+                  <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center" readonly>
+                </div>
+
+                <div class="form-group col-sm">
+                  <label for="input_name">Name</label>
+                  <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                  <label for="inputState">Category</label>
+                  <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
+                    <option *ngFor="let cat of allCategory$ | async"
+                    [selected]="cat.id === product.catId"
+                    [value]="cat.id">
+                    {{cat.name}}
+                  </option>
+                </select>
+                </div>
+              </div>
+
+              <div class="d-flex flex-column-reverse flex-md-row">
+                <!-- <div class="d-flex flex-md-row flex-column"> -->
+
+                <div class="flex form-group col-md-4 col-lg-3 mt-4 mt-md-3" >
+                  <img src="./assets/img/{{product.image}}" class="img-fluid" alt="{{product.name}}">
+                </div>
+
+                <div class="flex col-md">
+                  <div class="form-group">
+                    <label for="text_featured">Description</label>
+                    <textarea class="form-control" rows="4" id="text_featured" name="description" [(ngModel)]="product.description"></textarea>
+                  </div>
+
+
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Link</span>
+                    </div>
+                    <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control" required>
+                  </div>
+
+
+                  <div class="custom-file mt-2">
+                    <!-- <input type="file" class="custom-file-input" id="customFile"> -->
+                    <input type="file" class="custom-file-input" id="file"
+                      [(ngModel)]="selectedImage"
+                      [ngModelOptions]="{standalone: true}"
+                      (ngModelChange)="updateImageSource(editForm)"
+                      #file
+                    >
+                    <label class="custom-file-label" for="customFile">Choose file</label>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+
+
+            </fieldset>
+
+            </form>
+
+          </div>
+
+
+
+          <div class="col-md-3">
+
+              <fieldset [disabled]="formDisabler">
+
+              <div class="form-row">
+
+                <div class="form-group col-sm-6 col-md-12 col-lg-6">
+                  <label>Stock</label>
+                  <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
+                </div>
+
+                <div class="form-group col-sm-6 col-md">
+                  <label>Price</label>
+                  <div class="input-group">
+                    <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
+                    <div class="input-group-append">
+                      <span class="input-group-text">$</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
+
+                <div class="custom-control custom-switch col-6 col-md-12 col-lg-6">
+                  <input type="checkbox" class="custom-control-input" id="check_Active" name="active" [(ngModel)]="product.active">
+                  <label class="custom-control-label" for="check_Active">Active</label>
+                </div>
+
+                <div class="custom-control custom-switch col-6 col-md">
+                  <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured" [(ngModel)]="product.featured">
+                  <label class="custom-control-label" for="check_Featured">Featured</label>
+                </div>
+
+              </div>
+
+            </fieldset>
+
+          <div class="d-flex flex-row flex-md-column flex-xl-row mt-4">
+            <div class="col-6 col-md-12 col-xl-6">
+                <button  class="btn btn-primary btn-block" type="button" (click)="onEdit()">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  Edit
+                </button>
+            </div>
+            <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+                <button  class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                  View
+                </button>
+            </div>
+          </div>
+
+
+        <fieldset [disabled]="formDisabler">
+
+          <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
+            <div class="col-6 col-md-12 col-xl-6">
+                <button  class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                  Reset
+                </button>
+            </div>
+            <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+                <button  class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                  Save
+                </button>
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-center mt-2">
+            <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
+              <button  class="btn btn-primary btn-block" type="button">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+                Delete
+              </button>
+            </div>
+          </div>
+
+        </fieldset>
+
+
+
+
+
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </fieldset>
+  </form>
+
+</div>

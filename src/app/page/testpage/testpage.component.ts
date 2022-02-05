@@ -39,7 +39,7 @@ export class TestpageComponent implements OnInit {
 
   // keys: string[] = Object.keys( new Product() ).filter( k => this.columns.includes(k) );
 
-  keys: string[] = this.columns.filter( key => Object.keys( new Product() ).includes(key) );
+  keys: string[] = this.columns.filter(key => Object.keys(new Product()).includes(key));
 
   columnKey: string = ''; // kiválasztott oszlophoz tartozó objektumkulcs
 
@@ -79,21 +79,21 @@ export class TestpageComponent implements OnInit {
 
 
 
-    // array: any = getAllCategoryByKey();
+  // array: any = getAllCategoryByKey();
 
-    // getAllCategoryByKey(key: string = 'name'): any {
-    //   this.allCategory$.subscribe(
-    //     data => {
-    //       //const key = 'name';
-    //       let arr = data.map(item => {
-    //         return item[key]
-    //       });
-    //       console.log(arr);
-    //       this.array = arr;
-    //       return arr;
-    //     }
-    //     )
-    //   }
+  // getAllCategoryByKey(key: string = 'name'): any {
+  //   this.allCategory$.subscribe(
+  //     data => {
+  //       //const key = 'name';
+  //       let arr = data.map(item => {
+  //         return item[key]
+  //       });
+  //       console.log(arr);
+  //       this.array = arr;
+  //       return arr;
+  //     }
+  //     )
+  //   }
 
 
 
@@ -141,7 +141,7 @@ export class TestpageComponent implements OnInit {
   // Az ABC-sorrend megfordul azonos oszlopfejlésre kattintás után: 'A...B' <=> 'Z...A'
   clickCounter: number = 0;
 
-  onColumnSelect(key: string): void {
+  _onColumnSelect(key: string): void {
     (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
     // console.log(this.clickCounter) ;
     this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
@@ -163,22 +163,66 @@ export class TestpageComponent implements OnInit {
   product$: Observable<Product> = this.productService.get(3);
 
   onEdit(): void {
-    this.formDisabler=!this.formDisabler;
+    this.formDisabler = !this.formDisabler;
   }
+
+
+
+
+
+
+
+
+
+
+
+
   result: number[] = [];
-
-
+  arr: number[] = [];
   dataCopy() {
+    for (let i = 0; i < 100; i++) {
+      this.arr.push(i + 1);
+    }
+    console.log(this.arr);
     this.allProduct$.subscribe(
       data => {
         console.log(data)
-        for (let i:number = 0; i<data.length; i++) {
+        for (let i: number = 0; i < data.length; i++) {
           this.result.push(data[i].id);
         }
         console.log(this.result)
+        console.log(this.arr.filter(er => !this.result.includes(er)))
       }
-
     )
-}
+  }
+
+
+
+  // ----------------
+
+  icon: number = 0;
+  // A táblázat/lista sorbarendezéséhez:
+  //columnKey: string = '';
+  //sortDirection: string = 'A...Z';
+  //clickCounter: number = 0;
+  onColumnSelect(key: string): void {
+    (key === this.columnKey) ? this.clickCounter++ : this.clickCounter = 0;
+    this.sortDirection = (this.clickCounter % 2) ? 'Z...A' : 'A...Z';
+    this.columnKey = key;
+
+    if (key === 'id') this.icon = (this.sortDirection === 'A...Z') ? 1 : 2;
+    if (key === 'name') this.icon = (this.sortDirection === 'A...Z') ? 3 : 4;
+    if (key === 'stock') this.icon = (this.sortDirection === 'A...Z') ? 5 : 6;
+    if (key === 'price') this.icon = (this.sortDirection === 'A...Z') ? 7 : 8;
+
+  }
+
+  filterKey: string = 'name';
+  phrase: string = '';
+
+
+
+
+
 
 }

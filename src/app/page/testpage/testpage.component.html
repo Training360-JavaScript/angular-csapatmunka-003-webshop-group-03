@@ -1,6 +1,123 @@
 <p>Tesztoldal Józsinak</p>
 
-<button class="btn btn-danger" (click)="dataCopy()">Copy</button>
+
+
+
+
+
+<form #categorySelectForm="ngForm">
+
+
+  <div class="row col-5">
+    <div class="input-group mb-2">
+      <div class="input-group-prepend">
+        <label class="input-group-text" for="categorySelect">show by selected category</label>
+      </div>
+      <select name="cat" id="categorySelect" ngModel class="form-control">
+        <!-- <option value="" disabled>Válassz kategóriát</option> -->
+        <option value="">All category</option>
+        <option *ngFor="let cat of allCategory$ | async" [ngValue]="cat">
+          {{cat.name}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+
+
+  <div class="btn-group mb-2" role="group" aria-label="">
+    <div class="input-group-prepend">
+      <div class="input-group-text" id="">sort by ...</div>
+    </div>
+    <button type="button" class="btn btn-secondary" style="width: 6rem;" (click)="onColumnSelect('id')">
+      #id
+      <i *ngIf="!icon || icon > 2" class="fa fa-sort" aria-hidden="true"></i>
+      <i *ngIf="icon === 1" class="fa fa-long-arrow-down" aria-hidden="true"></i>
+      <i *ngIf="icon === 2" class="fa fa-long-arrow-up" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-secondary" style="width: 6rem;" (click)="onColumnSelect('name')">
+      name
+      <i *ngIf="!icon || icon < 3 || icon > 4" class="fa fa-sort" aria-hidden="true"></i>
+      <i *ngIf="icon === 3" class="fa fa-long-arrow-down" aria-hidden="true"></i>
+      <i *ngIf="icon === 4" class="fa fa-long-arrow-up" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-secondary" style="width: 6rem;" (click)="onColumnSelect('stock')">
+      stock
+      <i *ngIf="!icon || icon < 5 || icon > 6" class="fa fa-sort" aria-hidden="true"></i>
+      <i *ngIf="icon === 5" class="fa fa-long-arrow-down" aria-hidden="true"></i>
+      <i *ngIf="icon === 6" class="fa fa-long-arrow-up" aria-hidden="true"></i>
+    </button>
+    <button type="button" class="btn btn-secondary" style="width: 6rem;" (click)="onColumnSelect('price')">
+      price
+      <i *ngIf="!icon || icon < 7" class="fa fa-sort" aria-hidden="true"></i>
+      <i *ngIf="icon === 7" class="fa fa-long-arrow-down" aria-hidden="true"></i>
+      <i *ngIf="icon === 8" class="fa fa-long-arrow-up" aria-hidden="true"></i>
+    </button>
+  </div>
+
+
+  <div class="row col-6">
+    <div class="input-group mb-4">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="">search in</span>
+      </div>
+      <select class="form-control col-3" id="inputGroupSelect01" [(ngModel)]="filterKey"
+        [ngModelOptions]="{standalone: true}">
+        <option value="name" [defaultSelected]="filterKey">name</option>
+        <option value="description">description</option>
+        <option value="stock">stock</option>
+        <option value="price">price</option>
+      </select>
+
+      <input [(ngModel)]="phrase" [ngModelOptions]="{standalone: true}" type="text " class="form-control">
+      <button *ngIf="phrase" class="btn bg-transparent" style="margin-left: -40px; z-index: 100;" (click)="phrase=''">
+        <i class="fa fa-times"></i>
+      </button>
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+  <table class="table mt-3 ">
+    <thead>
+
+
+    </thead>
+    <tbody>
+      <!--
+      <tr *ngFor=" let product of listOfCategorizedProducts | sorter:columnKey:sortDirection |filter:keyword:'name'">
+        {{ allProduct$ | async | filter:'1':'catId' | json}}
+      -->
+      <tr
+        *ngFor=" let product of allProduct$ | async | filter:(categorySelectForm.value['cat']['id'] | json):'catId' | sorter:columnKey:sortDirection | filter:phrase:filterKey">
+        <td style="padding: 0" class="py-4">
+          <app-data-detail [product$]="product"></app-data-detail>
+        </td>
+
+      </tr>
+    </tbody>
+  </table>
+
+</form>
+
+
+
+<!-- teszt  -->
+
+
+
+
+<!-- <button class="btn btn-danger" (click)="dataCopy()">Copy</button> -->
 
 {{formDisabler}}
 
@@ -21,23 +138,24 @@
 
                 <div class="form-group " style="max-width: 3.2rem;">
                   <label for="inputEmail4">#id</label>
-                  <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center" readonly>
+                  <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center"
+                    readonly>
                 </div>
 
                 <div class="form-group col-sm">
                   <label for="input_name">Name</label>
-                  <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
+                  <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control"
+                    required>
                 </div>
 
                 <div class="form-group col-md-4">
                   <label for="inputState">Category</label>
                   <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
-                    <option *ngFor="let cat of allCategory$ | async"
-                    [selected]="cat.id === product.catId"
-                    [value]="cat.id">
-                    {{cat.name}}
-                  </option>
-                </select>
+                    <option *ngFor="let cat of allCategory$ | async" [selected]="cat.id === product.catId"
+                      [value]="cat.id">
+                      {{cat.name}}
+                    </option>
+                  </select>
                 </div>
               </div>
 
@@ -51,7 +169,8 @@
                 <div class="flex col-md">
                   <div class="form-group">
                     <label for="text_featured">Description</label>
-                    <textarea class="form-control" rows="4" id="text_featured" name="description" [(ngModel)]="product.description"></textarea>
+                    <textarea class="form-control" rows="4" id="text_featured" name="description"
+                      [(ngModel)]="product.description"></textarea>
                   </div>
 
 
@@ -59,18 +178,15 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">Link</span>
                     </div>
-                    <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control" required>
+                    <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control"
+                      required>
                   </div>
 
 
                   <div class="custom-file mt-2">
                     <!-- <input type="file" class="custom-file-input" id="customFile"> -->
-                    <input type="file" class="custom-file-input" id="file"
-                      [(ngModel)]="selectedImage"
-                      [ngModelOptions]="{standalone: true}"
-                      (ngModelChange)="updateImageSource(editForm)"
-                      #file
-                    >
+                    <input type="file" class="custom-file-input" id="file" [(ngModel)]="selectedImage"
+                      [ngModelOptions]="{standalone: true}" (ngModelChange)="updateImageSource(editForm)" #file>
                     <label class="custom-file-label" for="customFile">Choose file</label>
                   </div>
 
@@ -126,94 +242,96 @@
 
 
 
-            </form>
+          </form>
 
-          </div>
+        </div>
 
 
 
-          <div class="col-md-3">
+        <div class="col-md-3">
 
-              <fieldset [disabled]="formDisabler">
+          <fieldset [disabled]="formDisabler">
 
-              <div class="form-row">
+            <div class="form-row">
 
-                <div class="form-group col-sm-6 col-md-12 col-lg-6">
-                  <label>Stock</label>
-                  <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
-                </div>
+              <div class="form-group col-sm-6 col-md-12 col-lg-6">
+                <label>Stock</label>
+                <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
+              </div>
 
-                <div class="form-group col-sm-6 col-md">
-                  <label>Price</label>
-                  <div class="input-group">
-                    <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
-                    <div class="input-group-append">
-                      <span class="input-group-text">$</span>
-                    </div>
+              <div class="form-group col-sm-6 col-md">
+                <label>Price</label>
+                <div class="input-group">
+                  <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
                   </div>
                 </div>
-
               </div>
 
-              <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
+            </div>
 
-                <div class="custom-control custom-switch col-6 col-md-12 col-lg-6">
-                  <input type="checkbox" class="custom-control-input" id="check_Active" name="active" [(ngModel)]="product.active">
-                  <label class="custom-control-label" for="check_Active">Active</label>
-                </div>
+            <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
 
-                <div class="custom-control custom-switch col-6 col-md">
-                  <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured" [(ngModel)]="product.featured">
-                  <label class="custom-control-label" for="check_Featured">Featured</label>
-                </div>
-
+              <div class="custom-control custom-switch col-6 col-md-12 col-lg-6">
+                <input type="checkbox" class="custom-control-input" id="check_Active" name="active"
+                  [(ngModel)]="product.active">
+                <label class="custom-control-label" for="check_Active">Active</label>
               </div>
 
-            </fieldset>
+              <div class="custom-control custom-switch col-6 col-md">
+                <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured"
+                  [(ngModel)]="product.featured">
+                <label class="custom-control-label" for="check_Featured">Featured</label>
+              </div>
+
+            </div>
+
+          </fieldset>
 
           <div class="d-flex flex-row flex-md-column flex-xl-row mt-4">
             <div class="col-6 col-md-12 col-xl-6">
-                <button  class="btn btn-primary btn-block" type="button" (click)="onEdit()">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  Edit
-                </button>
+              <button class="btn btn-primary btn-block" type="button" (click)="onEdit()">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Edit
+              </button>
             </div>
             <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                  View
-                </button>
-            </div>
-          </div>
-
-
-        <fieldset [disabled]="formDisabler">
-
-          <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
-            <div class="col-6 col-md-12 col-xl-6">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-refresh" aria-hidden="true"></i>
-                  Reset
-                </button>
-            </div>
-            <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                  Save
-                </button>
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-center mt-2">
-            <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
-              <button  class="btn btn-primary btn-block" type="button">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                Delete
+              <button class="btn btn-primary btn-block" type="button">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                View
               </button>
             </div>
           </div>
 
-        </fieldset>
+
+          <fieldset [disabled]="formDisabler">
+
+            <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
+              <div class="col-6 col-md-12 col-xl-6">
+                <button class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                  Reset
+                </button>
+              </div>
+              <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+                <button class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                  Save
+                </button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2">
+              <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
+                <button class="btn btn-primary btn-block" type="button">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  Delete
+                </button>
+              </div>
+            </div>
+
+          </fieldset>
 
 
 
@@ -255,7 +373,7 @@
 <!-- idáig tart az új  -->
 
 <div class="container">
-cxvyxcvyxcv
+  cxvyxcvyxcv
   <form>
     <fieldset [disabled]="formDisabler">
       <fieldset>

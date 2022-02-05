@@ -72,8 +72,8 @@
       "image": "2.jpg",
       "price": 45,
       "stock": "2022-08-25",
-      "featured": true,
-      "active": true,
+      "featured": false,
+      "active": false,
       "link": "https://www.imdb.com/title/tt0184819/?ref_=ttmi_tt"
     },
     {

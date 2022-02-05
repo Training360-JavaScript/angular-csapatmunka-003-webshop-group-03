@@ -27,6 +27,7 @@ import { SorterPipe } from './pipe/sorter.pipe';
 import { AdminComponent } from './page/admin/admin.component';
 import { DataEditorComponent } from './common/data-editor/data-editor.component';
 import { MovieListComponent } from './common/movie-list/movie-list.component';
+import { DataDetailComponent } from './common/data-detail/data-detail.component';
 
 
 
@@ -54,7 +55,9 @@ import { MovieListComponent } from './common/movie-list/movie-list.component';
     SorterPipe,
     AdminComponent,
     DataEditorComponent,
-    MovieListComponent
+    MovieListComponent,
+    DataDetailComponent,
+
   ],
   imports: [
     BrowserModule,
