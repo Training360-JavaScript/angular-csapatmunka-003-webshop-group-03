@@ -1,28 +1,64 @@
-<div class="row">
-  <table class="table table-striped mt-3">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Price</th>
-        <th>Stock</th>
-        <th>Featured</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let product of allProduct | async">
-        <td>{{ product.id }}</td>
-        <td>{{ product.name }}</td>
-        <td>{{ product.catId }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.stock }}</td>
-        <td>{{ product.featured }}</td>
-        <button [routerLink]="['/', 'admin', 'data-editor', product.id]" class="btn btn-info mx-1 my-1">
-          Modify
-        </button>
-      </tr>
-    </tbody>
-  </table>
+<div class="container-fluid">
+  <div class="btn-group" role="group" aria-label="">
+    <div class="input-group-prepend">
+      <div class="input-group-text" id="">Admin page </div>
+    </div>
+    <button type="button" class="btn btn-secondary" style="width: 7rem;" (click)="pageSelect('simple')" [disabled]="show1">
+      simple
+    </button>
+    <button type="button" class="btn btn-secondary" style="width: 7rem;" (click)="pageSelect('advanced')" [disabled]="show2">
+      advance
+    </button>
+  </div>
+
+
+  <section *ngIf="show1">
+
+    <div class="row">
+      <table class="table table-striped mt-3">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th>Featured</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of allProduct | async">
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.catId }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.stock }}</td>
+          <td>{{ product.featured }}</td>
+          <button [routerLink]="['/', 'admin', 'data-editor', product.id]" class="btn btn-info mx-1 my-1">
+            Modify
+          </button>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  </section>
+
+
+
+  <section *ngIf="show2">
+    <app-testpage></app-testpage>
+
+
+
+  </section>
+
 </div>
+
+
+
+
+
+
+
 

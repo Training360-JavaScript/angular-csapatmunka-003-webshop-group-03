@@ -66,7 +66,7 @@ export class DataEditorComponent implements OnInit {
 
 
   onUpdate(product: Product, goBack?: boolean): void {
-    // console.log(product)
+    console.log(product)
     // A html input-jai string-et adnak vissza, ezt visszaállítja number formátummá.
     product.id = product.id*1;
     product.catId = product.catId*1;
@@ -97,8 +97,10 @@ export class DataEditorComponent implements OnInit {
 
   onReset(editForm :NgForm) {
     //editForm.resetForm();
+
+    console.log('this.initialProduct');
     console.log(this.initialProduct);
-    console.log(this.selectedImage);
+    //console.log(this.selectedImage);
     editForm.setValue(this.initialProduct);
   }
 
@@ -109,6 +111,12 @@ export class DataEditorComponent implements OnInit {
   }
 
   selectedImage : string = '';
+
+  formDisabler: boolean = false;
+
+  onEdit(): void {
+    this.formDisabler = !this.formDisabler;
+  }
 
 
 }

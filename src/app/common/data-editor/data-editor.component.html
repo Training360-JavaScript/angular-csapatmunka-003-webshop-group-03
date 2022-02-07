@@ -1,133 +1,225 @@
 
+<div class="d-flex justify-content-center align-items-center">
+  <form *ngIf="product$ | async as product" (ngSubmit)="onUpdate(product)" #editForm="ngForm">
+    <fieldset>
+      <div class="d-flex flex-column flex-md-row" style="border: 1px solid #888;">
+
+        <div class="col-md-9">
 
 
+          <fieldset [disabled]="formDisabler">
+
+            <div class="container form-row">
+
+              <div class="form-group " style="max-width: 3.2rem;">
+                <label for="input_name">#id</label>
+                <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center"
+                  required readonly>
+              </div>
+
+              <div class="form-group col-sm">
+                <label for="input_name">Name</label>
+                <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="inputState">Category</label>
+                <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
+                  <option *ngFor="let cat of allCategory$ | async" [selected]="cat.id === product.catId"
+                    [value]="cat.id">
+                    {{cat.name}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column-reverse flex-md-row">
+
+              <div class="flex form-group col-md-4 col-lg-3 mt-4 mt-md-3">
+                <img src="./assets/img/{{product.image}}" class="img-fluid" alt="{{product.name}}">
+              </div>
+
+              <div class="flex col-md">
+                <div class="form-group">
+                  <label for="text_featured">Description</label>
+                  <textarea class="form-control" rows="4" id="text_featured" name="description"
+                    [(ngModel)]="product.description"></textarea>
+                </div>
 
 
-<div class="row">
-  <div class="col-6 offset-3">
-    <form *ngIf="product$ | async as product" (ngSubmit)="onUpdate(product)" #editForm="ngForm">
-
-      <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control" required hidden>
-
-      <div class="form-group">
-        <label for="input_name">Name</label>
-        <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
-      </div>
-
-      <div class="form-group">
-        <label for="select_catId">Category</label>
-        <!-- <input [(ngModel)]="product.catId" name="catId" type="text" class="form-control" required> -->
-        <!-- Ellenőrzésre - törlendő -->
-        <div class="row ml-2">
-          <p>_catId: <span style='color: red'>{{ product.catId | json}}</span></p>
-          <!-- <p class="pl-4">#se: <span style='color: red'>{{se.value }}</span></p> -->
-          <p class="pl-4">id: <span style='color: red'>{{product.id }}</span></p>
-        </div>
-
-        <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
-          <option *ngFor="let cat of allCategory$ | async"
-          [selected]="cat.id === product.catId"
-          [value]="cat.id">
-          {{cat.name}}
-        </option>
-      </select>
-
-      </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Link</span>
+                  </div>
+                  <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control"
+                    required>
+                </div>
 
 
-      <div class="form-group">
-        <label for="text_featured">Description</label>
-        <textarea class="form-control" rows="4" id="text_featured" name="description" [(ngModel)]="product.description"></textarea>
-      </div>
+                <div class="form-group mt-3">
+                  <div class="input-group-prepend">
 
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Image</label>
+                    <label class="input-group-text bg-primary text-white" role="button" for="file2">
+                      <i class="fa fa-folder-open" aria-hidden="true"> Choose file</i>
+                    </label>
 
-        <div class="row ml-2">
-          <!-- <p>_image: <span style='color: red'>{{ product.image | json}}</span></p>
-          <p>_im: <span style='color: red'>{{ im.value }}</span></p> -->
-        </div>
-        <input type="file" class="form-control-file" id="file"
-          [(ngModel)]="selectedImage"
-          [ngModelOptions]="{standalone: true}"
-          (ngModelChange)="updateImageSource(editForm)"
-          #file
-        >
+                    <input type="file" class="form-control-file" id="file2" [(ngModel)]="selectedImage"
+                      [ngModelOptions]="{standalone: true}" (ngModelChange)="updateImageSource(editForm)" #file
+                      hidden>
 
-        <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1" name="image" [(ngModel)]="product.image" #im> -->
-        <input [(ngModel)]="product.image" id="text_image" name="image" type="text" class="form-control" required>
+                    <input [(ngModel)]="product.image" id="text_image" name="image" type="text" class="form-control"
+                      required>
+
+                  </div>
+                </div>
 
 
-      </div>
+              </div>
 
-      <div class="">
-        <img src="./assets/img/{{product.image}}"
+            </div>
 
-         style="object-fit:scale-down;
-         width:300px;
-         height:300px;
-         border: solid 1px #CCC"
-          class="" alt="">
-      </div>
-
-
-      <div class="form-group">
-        <label for="text_link">Link</label>
-        <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control" required>
-      </div>
-
-
-      <div class="form-group">
-
-        <div class="row ml-2">
-          <p>_active: <span style='color: red'>{{ product.active | json}}</span></p>
-          <p class="pl-4">_featured: <span style='color: red'>{{ product.featured | json}}</span></p>
-        </div>
-
-        <!-- <input [(ngModel)]="product.active" name="active" type="text" class="form-control" required> -->
-        <div class="form-check-inline">
-
-          <label class="form-check-label" for="check_Active">
-            <input type="checkbox" class="form-check-input" id="check_Active" name="active" [(ngModel)]="product.active">
-            Active
-          </label>
-
-          <label class="form-check-label ml-3" for="check_Featured">
-            <input type="checkbox" class="form-check-input" id="check_Featured" name="featured" [(ngModel)]="product.featured">
-            Featured
-          </label>
+          </fieldset>
 
         </div>
+
+
+
+        <div class="col-md-3">
+
+          <fieldset [disabled]="formDisabler">
+
+            <div class="form-row">
+
+              <div class="form-group col-sm-6 col-md-12 col-lg-6">
+                <label>Stock</label>
+                <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
+              </div>
+
+              <div class="form-group col-sm-6 col-md">
+                <label>Price</label>
+                <div class="input-group">
+                  <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
+
+              <div class="custom-control custom-switch col-6 col-md-12 col-lg-6">
+                <input type="checkbox" class="custom-control-input" id="check_Active" name="active"
+                  role="button"
+                  [(ngModel)]="product.active">
+                <label class="custom-control-label" for="check_Active">Active</label>
+              </div>
+
+              <div class="custom-control custom-switch col-6 col-md">
+                <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured"
+                  [(ngModel)]="product.featured">
+                <label class="custom-control-label" for="check_Featured">Featured</label>
+              </div>
+
+            </div>
+
+          </fieldset>
+
+          <div class="d-flex flex-row flex-md-column flex-xl-row mt-4">
+            <div class="col-6 col-md-12 col-xl-6">
+              <button class="btn btn-success btn-block" type="button" (click)="onReset(editForm)">
+                <i class="fa fa-refresh" aria-hidden="true"></i>
+                Reset
+              </button>
+            </div>
+            <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+              <button class="btn btn-primary btn-block" type="button" data-toggle="modal" data-target="#exampleModal">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                View
+              </button>
+            </div>
+          </div>
+
+
+          <fieldset>
+
+            <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
+              <div class="col-6 col-md-12 col-xl-6">
+                <button class="btn btn-primary btn-block" type="submit">
+                  <i class="fa fa-floppy-o" aria-hidden="true"> Save</i>
+
+                </button>
+              </div>
+              <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+                <button class="btn btn-danger btn-block" type="button" (click)="onDelete(product.id)">
+                  <i class="fa fa-trash-o" aria-hidden="true"> Delete</i>
+
+                </button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2">
+              <!-- <div class="col-6 col-md-12 col-xl-6 mt-xl-0"> -->
+              <div class="col-6 col-md-12 col-xl- mt-xl-0">
+                <button class="btn btn-primary btn-block" type="button" (click)="onUpdate(product, true)">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  Save & Back
+                </button>
+              </div>
+            </div>
+
+          </fieldset>
+
+          <!-- <div class="ml-2">
+            <div>_id: <span style='color: red'>{{ product.id | json}}</span></div>
+            <div>_name: <span style='color: red'>{{ product.name | json}}</span></div>
+            <p>_catId: <span style='color: red'>{{ product.catId | json}}</span></p>
+            <p>_stock: <span style='color: red'>{{ product.stock | json}}</span></p>
+            <p>_price: <span style='color: red'>{{ product.price | json}}</span></p>
+            <p>_active: <span style='color: red'>{{ product.active | json}}</span></p>
+            <p>_featured: <span style='color: red'>{{ product.featured | json}}</span></p>
+            <p>_description: <span style='color: red'>{{ product.description | json}}</span></p>
+            <p>_link: <span style='color: red'>{{ product.link | json}}</span></p>
+            <p>_image: <span style='color: red'>{{ product.image | json}}</span></p>
+          </div> -->
+
+        </div>
+
       </div>
 
+    </fieldset>
 
-      <div class="form-group">
-        <label>Price</label>
-        <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
+    <!-- {{editForm.value | json}} -->
+
+  </form>
+
+</div>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="movieModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="movieModalLabel">Movie card</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="d-flex justify-content-center">
+            <app-movie-card [movie]="product$ | async"></app-movie-card>
+            <!-- <app-data-detail [product]="product$ | async"></app-data-detail> -->
+
+          </div>
+
+        </div>
       </div>
 
-      <div class="form-group">
-        <label>Stock</label>
-        <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
-      </div>
-      <!-- <div class="form-group">
-        <label>Featured</label>
-        <input [(ngModel)]="product.featured" name="featured" type="text" class="form-control" required>
-      </div> -->
-
-      <button class="btn btn-primary mx-2" type="button" (click)="onUpdate(product, true)">
-        Save & Back
-      </button>
-      <button class="btn btn-primary mx-2" type="submit">
-        Save
-      </button>
-      <button class="btn btn-success mx-2" type="button" (click)="onReset(editForm)">
-        Reset
-      </button>
-      <button class="btn btn-danger mx-2" type="button" (click)="onDelete(product.id)">
-        Delete & Back
-      </button>
-    </form>
+    </div>
   </div>
 </div>
 

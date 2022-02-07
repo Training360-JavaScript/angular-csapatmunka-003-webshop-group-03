@@ -19,4 +19,21 @@ export class AdminComponent implements OnInit {
 
   allProduct: Observable<Product[]> = this.productService.getAll();
 
+  pageShow: string = 'simple';
+
+  show1: boolean = true;
+  show2: boolean = false;
+
+  pageSelect(page: string) {
+    if (page === 'simple') {
+      this.show1 = true;
+      this.show2 = false;
+    }
+    if (page === 'advanced') {
+      this.show1 = false;
+      this.show2 = true;
+    }
+
+  }
+
 }
