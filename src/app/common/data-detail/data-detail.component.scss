@@ -1,0 +1,15 @@
+.custom-file-input-new {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  opacity: 0.5;
+  padding: 11px 0px 24px 85px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, reduce } from 'rxjs';
-// import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { Category } from 'src/app/model/category';
 import { Product } from 'src/app/model/product';
@@ -26,7 +26,7 @@ export class TestpageComponent implements OnInit {
   //allProduct: Product[] = this.productService.getAll();
   allProduct$: Observable<Product[]> = this.productService.getAll();
 
-  oneProduct$: Observable<Product> = this.productService.get(3);
+  //oneProduct$: Observable<Product> = this.productService.get(3);
 
 
   //allProductInSameCategory = this.productService.getByCategory(5); // nem működik még
@@ -160,11 +160,12 @@ export class TestpageComponent implements OnInit {
 
   formDisabler: boolean = true;
 
-  product$: Observable<Product> = this.productService.get(3);
+  product$: Observable<Product> = this.productService.get(13);
 
   onEdit(): void {
     this.formDisabler = !this.formDisabler;
   }
+
 
 
 
@@ -221,6 +222,12 @@ export class TestpageComponent implements OnInit {
   phrase: string = '';
 
 
+  newItem: boolean = false;
+
+  createNewItem() {
+    this.newItem = !this.newItem;
+    console.log(this.newItem)
+  }
 
 
 

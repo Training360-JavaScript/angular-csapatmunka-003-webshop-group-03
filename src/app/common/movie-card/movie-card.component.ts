@@ -14,7 +14,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.movie.image = `assets/img/${this.movie.id}.jpg`
+    this.movie.image = `./assets/img/${this.movie.image}`
   }
 
 

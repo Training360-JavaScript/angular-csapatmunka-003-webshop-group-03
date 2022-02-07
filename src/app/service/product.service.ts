@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable, Pipe } from '@angular/core';
-import { filter, map, Observable } from 'rxjs';
+import { catchError, filter, map, Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { categoriesOfList } from '../database/mock-category';
 import { productsOfList } from '../database/mock-product';
@@ -15,6 +15,12 @@ export class ProductService {
 
   apiUrl: string = environment.apiUrl;
   endPoint: string = 'product';
+
+  httpOptions = {
+    headers: new HttpHeaders(
+      {'Content-Type': 'application/json'}
+    )
+  };
 
   // Külső adatbázisban lévő product-tömb, vagyis a filmadatok teljes állománya.
   //list: Product[] = productsOfList;
@@ -95,6 +101,54 @@ export class ProductService {
     const url = `${this.apiUrl}${this.endPoint}/${id}`;
     return this.http.delete<Product>(url)
   }
+
+
+
+  create(product: Product): Observable<Product> {
+    console.log('create working...');
+
+    // let newId = 0;
+    // this.getAll().subscribe({
+    //   next: (data) => {
+    //     newId = Math.max(...data.map(x => x.id)) + 1;
+    //     console.log('lksdajfg', newId);
+    //     product.id = 141;
+    //   }
+    // })
+
+    //const url = `${this.eventsUrl}/${event.id}`;
+    //const url = `${this.apiUrl}${this.endPoint}/${product.id}`;  // érdekes módon, csak akkor működik, ha nincs megadva id-azonosító a címben
+
+    const url = `${this.apiUrl}${this.endPoint}`;  // érdekes módon, csak akkor működik, ha nincs megadva id-azonosító a címben
+
+    //product.id++;
+
+    // const body = JSON.stringify(product);
+    console.log(product);
+    // console.log('body: ', body);
+    console.log(url);
+    const httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Cache-Control': 'no-cache'
+    });
+
+    return this.http.post<any>(url, product, this.httpOptions ).pipe(
+      catchError(this.handleError<any>('create', []))
+    )
+
+    }
+
+
+
+
+
+
+    private handleError<T>(operation: string = 'operation', result?: T) {
+      return (error: any): Observable<T> => {
+        console.error(error);
+        return of(result as T);
+      }
+    }
 
 
 

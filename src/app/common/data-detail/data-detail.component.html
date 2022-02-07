@@ -1,67 +1,72 @@
 
 
+<fieldset [disabled]="formDisablerAll">
 
-
-<div class="container-fluid" >
-
-  <form *ngIf="product$ as product">
+<div class="container-fluid"
+[ngStyle]="{opacity: formDisablerAll?'0.3':' '}"
+>
+  <form *ngIf="product" #editForm="ngForm" (ngSubmit)="onUpdate(product)">
     <fieldset>
-      <div class="d-flex flex-column flex-md-row" style="border: 1px solid #888;">
+      <div class="d-flex flex-column flex-md-row" style="border: 1px solid #888;"
+        [ngStyle]="{borderColor: formDisabler?'#888':' #52be80 '}"
 
+        [ngStyle]="{backgroundColor: formDisabler?'transparent':' #ffe4b5 '}">
         <div class="col-md-9">
 
-          <form>
-            <fieldset [disabled]="formDisabler">
+
+          <fieldset [disabled]="formDisabler">
 
 
-              <div class="container form-row">
+            <div class="container form-row">
 
-                <div class="form-group " style="max-width: 3.2rem;">
-                  <label for="inputEmail4">#id</label>
-                  <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center" readonly>
-                </div>
+              <div class="form-group " style="max-width: 3.2rem;">
+                <label for="inputEmail4">#id</label>
+                <input [(ngModel)]="product.id" id="input_name" name="id" type="text" class="form-control text-center"
+                  readonly>
+              </div>
 
-                <div class="form-group col-sm">
-                  <label for="input_name">Name</label>
-                  <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
-                </div>
+              <div class="form-group col-sm">
+                <label for="input_name">Name</label>
+                <input [(ngModel)]="product.name" id="input_name" name="name" type="text" class="form-control" required>
+              </div>
 
-                <div class="form-group col-md-4">
-                  <label for="inputState">Category</label>
-                  <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
-                    <option *ngFor="let cat of allCategory$ | async"
-                    [selected]="cat.id === product.catId"
+              <div class="form-group col-md-4">
+                <label for="inputState">Category</label>
+                <select name="catId" id="select_catId" class="form-control" [(ngModel)]="product.catId" #se>
+                  <option *ngFor="let cat of allCategory$ | async" [selected]="cat.id === product.catId"
                     [value]="cat.id">
                     {{cat.name}}
                   </option>
                 </select>
-                </div>
+              </div>
+            </div>
+
+            <div class="d-flex flex-column-reverse flex-md-row">
+              <!-- <div class="d-flex flex-md-row flex-column"> -->
+
+              <div class="flex form-group col-md-4 col-lg-3 mt-4 mt-md-3">
+                <img src="./assets/img/{{product.image}}" class="img-fluid" alt="{{product.name}}">
               </div>
 
-              <div class="d-flex flex-column-reverse flex-md-row">
-                <!-- <div class="d-flex flex-md-row flex-column"> -->
-
-                <div class="flex form-group col-md-4 col-lg-3 mt-4 mt-md-3" >
-                  <img src="./assets/img/{{product.image}}" class="img-fluid" alt="{{product.name}}">
+              <div class="flex col-md">
+                <div class="form-group">
+                  <label for="text_featured">Description</label>
+                  <textarea class="form-control" rows="4" id="text_featured" name="description"
+                    [(ngModel)]="product.description"></textarea>
                 </div>
 
-                <div class="flex col-md">
-                  <div class="form-group">
-                    <label for="text_featured">Description</label>
-                    <textarea class="form-control" rows="4" id="text_featured" name="description" [(ngModel)]="product.description"></textarea>
+
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Link</span>
                   </div>
+                  <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control"
+                    required>
+                </div>
 
 
-                  <div class="input-group">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Link</span>
-                    </div>
-                    <input [(ngModel)]="product.link" id="text_link" name="link" type="text" class="form-control" required>
-                  </div>
+                <!-- <div class="custom-file mt-2">
 
-
-                  <div class="custom-file mt-2">
-                    <!-- <input type="file" class="custom-file-input" id="customFile"> -->
                     <input type="file" class="custom-file-input" id="file"
                       [(ngModel)]="selectedImage"
                       [ngModelOptions]="{standalone: true}"
@@ -69,108 +74,191 @@
                       #file
                     >
                     <label class="custom-file-label" for="customFile">Choose file</label>
-                  </div>
-
-
-                </div>
-
-              </div>
+                  </div> -->
 
 
 
-            </fieldset>
+                  <div class="input-group mt-2">
+                    <div class="input-group-prepend" >
+                      <span class="input-group-text" [ngClass]="formDisabler ? ' ' : 'text-white bg-primary'" >
+                        <i class="fa fa-folder-open " aria-hidden="true"> Image</i>
 
-            </form>
+                        <input *ngIf="!formDisabler" type="file" class="custom-file-input-new"
+                          id="file3" [(ngModel)]="selectedImage"
+                          [ngModelOptions]="{standalone: true}" (ngModelChange)="updateImageSource(editForm)" #file>
 
-          </div>
-
-
-
-          <div class="col-md-3">
-
-              <fieldset [disabled]="formDisabler">
-
-              <div class="form-row">
-
-                <div class="form-group col-sm-6 col-md-12 col-lg-6">
-                  <label>Stock</label>
-                  <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
-                </div>
-
-                <div class="form-group col-sm-6 col-md">
-                  <label>Price</label>
-                  <div class="input-group">
-                    <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
-                    <div class="input-group-append">
-                      <span class="input-group-text">$</span>
+                      </span>
                     </div>
+                    <input [(ngModel)]="product.image" id="text_image" name="image" type="text" class="form-control" required>
                   </div>
-                </div>
+
+
+
 
               </div>
 
-              <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
+            </div>
+
+
+
+          </fieldset>
+
+
+
+        </div>
+
+
+
+        <div class="col-md-3">
+
+          <fieldset [disabled]="formDisabler">
+
+            <div class="form-row">
+
+              <div class="form-group col-sm-6 col-md-12 col-lg-6">
+                <label>Stock</label>
+                <input [(ngModel)]="product.stock" name="stock" type="text" class="form-control" required>
+              </div>
+
+              <div class="form-group col-sm-6 col-md">
+                <label>Price</label>
+                <div class="input-group">
+                  <input [(ngModel)]="product.price" name="price" type="text" class="form-control" required>
+                  <div class="input-group-append">
+                    <span class="input-group-text">$</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+
+
+            <!-- <div class="row ml-4 pl-3 ml-md-2 pl-md-0">
+              <div class="form-group">
 
                 <div class="custom-control custom-switch col-6 col-md-12 col-lg-6">
-                  <input type="checkbox" class="custom-control-input" id="check_Active" name="active" [(ngModel)]="product.active">
+                  <input type="checkbox" class="custom-control-input" id="check_Active" name="active"
+                  [(ngModel)]="product.active">
                   <label class="custom-control-label" for="check_Active">Active</label>
                 </div>
 
                 <div class="custom-control custom-switch col-6 col-md">
-                  <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured" [(ngModel)]="product.featured">
+                  <input type="checkbox" class="custom-control-input" id="check_Featured" name="featured"
+                    [(ngModel)]="product.featured">
                   <label class="custom-control-label" for="check_Featured">Featured</label>
                 </div>
 
               </div>
+            </div> -->
 
-            </fieldset>
+
+            <div class="form-group text-center mt-3">
+
+              <!-- <div class="row">
+                <p>_active: <span style='color: red'>{{ product.active | json}}</span></p>
+                <p class="pl-4">_featured: <span style='color: red'>{{ product.featured | json}}</span></p>
+              </div> -->
+
+              <!-- <input [(ngModel)]="product.active" name="active" type="text" class="form-control" required> -->
+              <div class="form-check form-check-inline">
+
+                <label class="form-check-label" for="">
+                  <input type="checkbox" style="top: .8rem; width: 1.25rem; height: 1.25rem;" class="form-check-input"
+                    id="check_Active" name="active" [(ngModel)]="product.active">
+                  Active
+                </label>
+
+                <label class="form-check-label ml-3" for="">
+                  <input type="checkbox" style="top: .8rem; width: 1.25rem; height: 1.25rem;" class="form-check-input"
+                    id="check_Featured" name="featured" [(ngModel)]="product.featured">
+                  Featured
+                </label>
+
+
+
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+          </fieldset>
 
           <div class="d-flex flex-row flex-md-column flex-xl-row mt-4">
             <div class="col-6 col-md-12 col-xl-6">
-                <button  class="btn btn-primary btn-block" type="button" (click)="onEdit()">
-                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                  Edit
-                </button>
+              <button class="btn btn-primary btn-block" type="button" (click)="onEdit()">
+                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                Edit
+              </button>
             </div>
             <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-eye" aria-hidden="true"></i>
-                  View
-                </button>
-            </div>
-          </div>
-
-
-        <fieldset [disabled]="formDisabler">
-
-          <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
-            <div class="col-6 col-md-12 col-xl-6">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-refresh" aria-hidden="true"></i>
-                  Reset
-                </button>
-            </div>
-            <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
-                <button  class="btn btn-primary btn-block" type="button">
-                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
-                  Save
-                </button>
-            </div>
-          </div>
-
-          <div class="d-flex justify-content-center mt-2">
-            <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
-              <button  class="btn btn-primary btn-block" type="button">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-                Delete
+              <button class="btn btn-primary btn-block" type="button" disabled>
+                <i class="fa fa-eye" aria-hidden="true"></i>
+                View
               </button>
             </div>
           </div>
 
-        </fieldset>
 
+          <fieldset [disabled]="formDisabler">
 
+            <div class="d-flex flex-row flex-md-column flex-xl-row mt-2">
+              <div class="col-6 col-md-12 col-xl-6">
+                <button class="btn btn-block" [ngClass]="formDisabler ? 'btn-primary' : 'btn-success'" type="button"
+                  (click)="onReset(editForm)">
+                  <i class="fa fa-refresh" aria-hidden="true"></i>
+                  Reset
+                </button>
+              </div>
+              <div class="col-6 col-md-12 mt-md-2 col-xl-6 mt-lg-2 mt-xl-0">
+                <button class="btn btn-primary btn-block" type="submit">
+                  <i class="fa fa-floppy-o" aria-hidden="true"></i>
+                  Save
+                </button>
+              </div>
+            </div>
 
+            <div class="d-flex justify-content-center mt-2" *ngIf="product.id !== 0">
+              <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
+                <button class="btn btn-block" [ngClass]="formDisabler ? 'btn-primary' : 'btn-danger'" type="button"
+                (click)="onDelete(product.id)">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  Delete
+                </button>
+              </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-2" *ngIf="product.id === 0">
+              <div class="col-6 col-md-12 col-xl-6 mt-xl-0">
+                <button class="btn btn-block" [ngClass]="formDisabler ? 'btn-primary' : 'btn-info'" type="button"
+                (click)="onCreate(product)">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                  Create
+                </button>
+              </div>
+            </div>
+
+          </fieldset>
+
+          <!--
+          <div class="ml-2">
+            <div>_id: <span style='color: red'>{{ product.id | json}}</span></div>
+            <div>_name: <span style='color: red'>{{ product.name | json}}</span></div>
+            <p>_catId: <span style='color: red'>{{ product.catId | json}}</span></p>
+            <p>_stock: <span style='color: red'>{{ product.stock | json}}</span></p>
+            <p>_price: <span style='color: red'>{{ product.price | json}}</span></p>
+            <p>_active: <span style='color: red'>{{ product.active | json}}</span></p>
+            <p>_featured: <span style='color: red'>{{ product.featured | json}}</span></p>
+            <p>_description: <span style='color: red'>{{ product.description | json}}</span></p>
+            <p>_link: <span style='color: red'>{{ product.link | json}}</span></p>
+            <p>_image: <span style='color: red'>{{ product.image | json}}</span></p>
+          </div> -->
 
 
 
@@ -188,3 +276,11 @@
   </form>
 
 </div>
+
+
+
+
+
+
+
+
