@@ -1,9 +1,13 @@
-<div class="row">
-  <h4>Kiemelt termékek</h4>
+<h2 class="text-center mt-4">Welcome to <span class="solidTitle"> Solid</span> Cast! </h2>
+
+<h3 class="text-center mt-3 mb-3">Our movies are <span class="solidTitle">S</span>hiny <span class="solidTitle">O</span>ld-fashioned <span class="solidTitle">L</span>audable and <span class="solidTitle">I</span>ncredible <span class="solidTitle">D</span>eep</h3>
+
+<div class="row mt-3 mb-3">
+  <h4>Featured content</h4>
   <app-movie-pager [productList]="allProduct$ | async | featured:'true' | slice:0:5"></app-movie-pager>
 </div>
 <div class="row">
-  <h4>Akciós termékek</h4>
+  <h4>Movies on sale</h4>
   <app-movie-pager [productList]="allProduct$ | async | numberrandom:5"></app-movie-pager>
 </div>
 

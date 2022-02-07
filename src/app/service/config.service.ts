@@ -16,7 +16,7 @@ export class ConfigService {
   menuItems: IMenuItem[] = [
     {text: 'Home', link: '/', icon: 'home'},
     {text: 'Admin', link: '/admin', icon: 'admin'},
-    {text: 'Tesztoldal', link: '/test'},
+    //{text: 'Tesztoldal', link: '/test'},
   ];
 
   categoryMenuItems: IMenuItem[] = [
